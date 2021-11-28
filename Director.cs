@@ -61,7 +61,8 @@ namespace colony_builder
         /// </summary>
         private bool IsGameOver()
         {
-            throw new NotImplementedException();
+            // TODO: Determine game-end conditions. For now it is always true
+            return false;
         }
 
         /// <summary>
