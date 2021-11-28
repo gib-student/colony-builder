@@ -14,15 +14,22 @@ namespace colony_builder
             // Create the cast
             Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
 
+            // Initial Map
+            cast["maps"]= new List<Actor>();
+            Map defaultMap = new Map();
+            cast["maps"].Add(defaultMap);
+
             // Initial  Resources
 
             // Initial Settlements
+            cast["settlements"] = new List<Actor>();
+            Settlement defaultSettlement = new Settlement(new Point(
+                Constants.START_SETTLEMENT_X, Constants.START_SETTLEMENT_Y));
+            cast["settlements"].Add(defaultSettlement);
 
             // Initial Roads
 
             // Initial Population
-
-            // Initial Map
 
             // Initial Farms
 
@@ -39,14 +46,14 @@ namespace colony_builder
             script["input"] = new List<Action>();
             script["update"] = new List<Action>();
             
-            DrawActorsAction drawActorsAction = new DrawActorsAction();
+            DrawActorsAction drawActorsAction = new DrawActorsAction(outputService);
             script["output"].Add(drawActorsAction);
 
             // TODO: Add all of the script
 
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y,
-                "Batter", Constants.FRAME_RATE);
+                "Colony Builder", Constants.FRAME_RATE);
             audioService.StartAudio();
             // audioService.PlaySound(Constants.SOUND_START);
 
