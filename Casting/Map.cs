@@ -6,7 +6,7 @@ namespace colony_builder.Casting
     {
         public Map()
         {
-            SetImage(Constants.BLUE_BLOCK_IMG_FILEPATH);
+            SetImage(Constants.MAP_IMG_FILEPATH);
             SetWidth(Constants.MAP_WIDTH);
             SetHeight(Constants.MAP_HEIGHT);
         }
