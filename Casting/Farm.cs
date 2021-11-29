@@ -4,9 +4,11 @@ namespace colony_builder.Casting
 {
     public class Farm : Actor
     {
-        public Farm()
+        public Farm(Point position)
         {
-           
+            SetPosition(position);
+            SetWidth(Constants.FARM_WIDTH);
+            SetHeight(Constants.FARM_HEIGHT);
         }
     }
 }
