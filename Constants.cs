@@ -21,6 +21,11 @@ namespace colony_builder
         public const int SETTLEMENT_HEIGHT = 75;
         public const int START_SETTLEMENT_X = 1285;
         public const int START_SETTLEMENT_Y = 915;
+        
+        public const string UNBUILT_SETTLEMENT_IMG_FILEPATH = "./Assets/pixel-log-cabin-tiny-light.png";
+
+        public const int SETTLEMENT_2_X = START_SETTLEMENT_X;
+        public const int SETTLEMENT_2_Y = ROAD_INITIAL_Y - 80;
 
         public const string ROAD_IMG_FILEPATH = "";
         public const int ROAD_WIDTH = 15;
@@ -62,10 +67,13 @@ namespace colony_builder
         public const int RESOURCES_IMG_Y = 960;
 
         
-        public const int INITIAL_POP = 31;
-        public const int POP_X = RESOURCES_Y + 400;
+        public const int POP_INITIAL = 31;
+        public const int POP_X = RESOURCES_X + 290;
         public const int POP_Y = RESOURCES_Y;
-        public const int POP_IMG_WIDTH = 35;
+        
+        public const int POP_IMG_X = POP_X - 3;
+        public const int POP_IMG_Y = RESOURCES_IMG_Y;
+        public const int POP_IMG_WIDTH = 50;
         public const int POP_IMG_HEIGHT = POP_IMG_WIDTH;
     }
 }
