@@ -26,6 +26,12 @@ namespace colony_builder
                 Constants.START_SETTLEMENT_X, Constants.START_SETTLEMENT_Y));
             cast["settlements"].Add(initialSettlement);
 
+            // Unbuilt Settlements
+            cast["unbuiltSettlements"] = new List<Actor>();
+            UnbuiltSettlement settlement2 = new UnbuiltSettlement(new Point(
+                Constants.SETTLEMENT_2_X, Constants.SETTLEMENT_2_Y));
+            cast["unbuiltSettlements"].Add(settlement2);
+
             // Initial Roads
             cast["roads"] = new List<Actor>();
             Road initialRoad = new Road(new Point(
@@ -61,6 +67,14 @@ namespace colony_builder
             cast["resourcesImages"].Add(goldImg);
 
             // Initial Population
+            cast["population"] = new List<Actor>();
+            Population population = new Population();
+            cast["population"].Add(population);
+
+            // Population image
+            cast["popImage"] = new List<Actor>();
+            PopImg popImg = new PopImg();
+            cast["popImage"].Add(popImg);
 
             // Create the script
             Dictionary<string, List<Action>> script = new Dictionary<string, List<Action>>();
