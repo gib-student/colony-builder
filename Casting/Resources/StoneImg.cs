@@ -12,5 +12,10 @@ namespace colony_builder.Casting
             SetWidth(Constants.STONE_IMG_WIDTH);
             SetHeight(Constants.STONE_IMG_HEIGHT);
         }
+
+        public override void DoAction()
+        {
+            
+        }
     }
 }

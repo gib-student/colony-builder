@@ -10,5 +10,10 @@ namespace colony_builder.Casting
             // SetImage(Constants.);
             SetPosition(position);
         }
+
+        public override void DoAction()
+        {
+            
+        }
     }
 }

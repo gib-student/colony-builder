@@ -24,9 +24,9 @@ namespace colony_builder.Scripting
                 {
                     foreach (Actor actor in group)
                     {
-                        if (actor.GetHasActionIfPressed())
+                        if (actor.HasActionIfPressed())
                         {
-
+                            actor.DoAction();
                         }
                     }
                 }

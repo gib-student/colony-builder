@@ -2,7 +2,7 @@ using System;
 
 namespace colony_builder.Casting
 {
-    public class Actor
+    public abstract class Actor
     {
         protected Point _position;
         protected Point _velocity;
@@ -165,5 +165,7 @@ namespace colony_builder.Casting
         {
             return $"Position: ({_position.GetX()}, {_position.GetY()}), Velocity({_velocity.GetX()}, {_velocity.GetY()})";
         }
+
+        public abstract void DoAction();
     }
 }

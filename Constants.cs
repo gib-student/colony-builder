@@ -78,6 +78,7 @@ namespace colony_builder
         public const int GOLD_IMG_X = FOOD_IMG_X + 215;
         public const int GOLD_IMG_WIDTH = 35;
         public const int GOLD_IMG_HEIGHT = GOLD_IMG_WIDTH;
+        public const string GOLD_TEXT = "gold";
         public const int RESOURCES_IMG_Y = 960;
 
         
@@ -116,6 +117,8 @@ namespace colony_builder
         public const int MINUS_SIGN_X = MINUS_BUTTON_X + BUTTON_SIGN_X_Y_SPACE;
         public const int ADD_SIGN_X  = ADD_BUTTON_X + BUTTON_SIGN_X_Y_SPACE;
         public const int EMPLOYED_VALUE_X = MINUS_BUTTON_X + MINUS_BUTTON_EMPLOYED_VALUE_X_PADDING;
+        public const string MINUS_BUTTON_TYPE = "minus_button";
+        public const string ADD_BUTTON_TYPE = "add_button";
         // Food constants
         public const string FOOD_ACTIONBAR_TEXT = "Food";
         public const int FOOD_EMPLOYED_INITIAL_VALUE = 13;

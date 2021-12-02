@@ -63,7 +63,7 @@ namespace colony_builder
             
             // Initial Resources
             cast["resources"] = new List<Actor>();
-            Resources resources = new Resources();
+            ResourcesText resources = new ResourcesText();
             FoodImg foodImg = new FoodImg();
             WoodImg woodImg = new WoodImg();
             StoneImg stoneImg = new StoneImg();
@@ -93,9 +93,11 @@ namespace colony_builder
                 Constants.RESOURCE_ACTIONBAR_TEXT_X, Constants.FOOD_ACTIONBAR_TEXT_Y),
                 Constants.FOOD_ACTIONBAR_TEXT);
             Button foodMinusButton = new Button(new Point(
-                Constants.MINUS_BUTTON_X, Constants.FOOD_BUTTONS_Y));
+                Constants.MINUS_BUTTON_X, Constants.FOOD_BUTTONS_Y),
+                Constants.MINUS_BUTTON_TYPE, Constants.FOOD_ACTIONBAR_TEXT);
             Button foodAddButton = new Button(new Point(
-                Constants.ADD_BUTTON_X, Constants.FOOD_BUTTONS_Y));
+                Constants.ADD_BUTTON_X, Constants.FOOD_BUTTONS_Y),
+                Constants.ADD_BUTTON_TYPE, Constants.FOOD_ACTIONBAR_TEXT);
             Text foodMinusSign = new Text(new Point(
                 Constants.MINUS_SIGN_X, Constants.FOOD_SIGNS_Y),
                 Constants.MINUS_SIGN);
@@ -110,9 +112,11 @@ namespace colony_builder
                 Constants.RESOURCE_ACTIONBAR_TEXT_X, Constants.WOOD_ACTIONBAR_TEXT_Y),
                 Constants.WOOD_ACTIONBAR_TEXT);
             Button woodMinusButton = new Button(new Point(
-                Constants.MINUS_BUTTON_X, Constants.WOOD_BUTTONS_Y));
+                Constants.MINUS_BUTTON_X, Constants.WOOD_BUTTONS_Y),
+                Constants.MINUS_BUTTON_TYPE, Constants.WOOD_ACTIONBAR_TEXT);
             Button woodAddButton = new Button(new Point(
-                Constants.ADD_BUTTON_X, Constants.WOOD_BUTTONS_Y));
+                Constants.ADD_BUTTON_X, Constants.WOOD_BUTTONS_Y),
+                Constants.ADD_BUTTON_TYPE, Constants.WOOD_ACTIONBAR_TEXT);
             Text woodMinusSign = new Text(new Point(
                 Constants.MINUS_SIGN_X, Constants.WOOD_SIGNS_Y),
                 Constants.MINUS_SIGN);
@@ -127,9 +131,11 @@ namespace colony_builder
                 Constants.RESOURCE_ACTIONBAR_TEXT_X, Constants.STONE_ACTIONBAR_TEXT_Y),
                 Constants.STONE_ACTIONBAR_TEXT);
             Button stoneMinusButton = new Button(new Point(
-                Constants.MINUS_BUTTON_X, Constants.STONE_BUTTONS_Y));
+                Constants.MINUS_BUTTON_X, Constants.STONE_BUTTONS_Y),
+                Constants.MINUS_BUTTON_TYPE, Constants.STONE_ACTIONBAR_TEXT);
             Button stoneAddButton = new Button(new Point(
-                Constants.ADD_BUTTON_X, Constants.STONE_BUTTONS_Y));
+                Constants.ADD_BUTTON_X, Constants.STONE_BUTTONS_Y),
+                Constants.ADD_BUTTON_TYPE, Constants.STONE_ACTIONBAR_TEXT);
             Text stoneMinusSign = new Text(new Point(
                 Constants.MINUS_SIGN_X, Constants.STONE_SIGNS_Y),
                 Constants.MINUS_SIGN);
