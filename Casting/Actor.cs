@@ -11,7 +11,9 @@ namespace colony_builder.Casting
         protected int _height = 0;
 
         protected string _text = "";
-        private string _image = ""; 
+        private string _image = "";
+
+        protected bool _hasActionIfPressed = false;
 
         public Actor()
         {
@@ -123,6 +125,16 @@ namespace colony_builder.Casting
         public void SetVelocity(Point newVelocity)
         {
             _velocity = newVelocity;
+        }
+
+        public void SetHasActionIfPressed(bool isActionable)
+        {
+            _hasActionIfPressed = isActionable;   
+        }
+
+        public bool HasActionIfPressed()
+        {
+            return _hasActionIfPressed;
         }
 
         public void MoveNext()
