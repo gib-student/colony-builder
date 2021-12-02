@@ -12,5 +12,10 @@ namespace colony_builder.Casting
             SetWidth(Constants.FOOD_IMG_WIDTH);
             SetHeight(Constants.FOOD_IMG_HEIGHT);
         }
+
+        public override void DoAction()
+        {
+            
+        }
     }
 }

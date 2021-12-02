@@ -20,5 +20,10 @@ namespace colony_builder.Casting
                 SetHeight(Constants.HORIZONTAL_ROAD_HEIGHT);
             }
         }
+
+        public override void DoAction()
+        {
+            
+        }
     }
 }

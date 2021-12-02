@@ -17,5 +17,10 @@ namespace colony_builder.Casting
         {
             SetText(_population.ToString());
         }
+
+        public override void DoAction()
+        {
+            
+        }
     }
 }

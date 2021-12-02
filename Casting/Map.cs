@@ -10,5 +10,10 @@ namespace colony_builder.Casting
             SetWidth(Constants.MAP_WIDTH);
             SetHeight(Constants.MAP_HEIGHT);
         }
+
+        public override void DoAction()
+        {
+            
+        }
     }
 }

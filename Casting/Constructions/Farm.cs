@@ -12,5 +12,10 @@ namespace colony_builder.Casting
             SetWidth(Constants.FARM_WIDTH);
             SetHeight(Constants.FARM_HEIGHT);
         }
+
+        public override void DoAction()
+        {
+            
+        }
     }
 }

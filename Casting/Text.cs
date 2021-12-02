@@ -11,5 +11,10 @@ namespace colony_builder.Casting
             SetPosition(position);
             SetText(text);
         }
+
+        public override void DoAction()
+        {
+            
+        }
     }
 }
