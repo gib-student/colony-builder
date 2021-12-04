@@ -6,12 +6,15 @@ namespace colony_builder.Casting
     {
         public VerticalLine(Point position)
         {
-            // TODO
-            // SetImage(Constants.);
             SetPosition(position);
         }
 
         public override void DoAction()
+        {
+            
+        }
+
+        public override void Update()
         {
             
         }

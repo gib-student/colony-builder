@@ -17,8 +17,8 @@ namespace colony_builder
         public const int MAP_HEIGHT = 1060;
 
         public const string SETTLEMENT_IMG_FILEPATH = "./Assets/pixel-log-cabin-tiny.png";
-        public const int SETTLEMENT_WIDTH = 75;
-        public const int SETTLEMENT_HEIGHT = 75;
+        public const int SETTLEMENT_WIDTH = 100;
+        public const int SETTLEMENT_HEIGHT = SETTLEMENT_WIDTH;
         public const string UNBUILT_SETTLEMENT_IMG_FILEPATH = "./Assets/pixel-log-cabin-tiny-light.png";
         public const bool AVAILABLE_TO_BUILD = true;
         public const bool NOT_AVAILABLE_TO_BUILD = false;
@@ -146,5 +146,8 @@ namespace colony_builder
         public const int UNEMPLOYED_TEXT_Y = STONE_BUTTONS_Y + BUTTON_HEIGHT + RESOURCE_TEXT_BUTTONS_VERTICAL_PADDING;
         public const int UNEMPLOYED_NUMVILLAGERS_X = RESOURCE_ACTIONBAR_TEXT_X + 15;
         public const int UNEMPLOYED_NUMVILLAGERS_Y = UNEMPLOYED_TEXT_Y + RESOURCE_TEXT_BUTTONS_VERTICAL_PADDING;
+
+        // Error codes
+        public const int ERROR = -1;
     }
 }

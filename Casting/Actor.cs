@@ -167,5 +167,7 @@ namespace colony_builder.Casting
         }
 
         public abstract void DoAction();
+        
+        public abstract void Update();
     }
 }

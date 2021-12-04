@@ -2,7 +2,7 @@ using System;
 
 namespace colony_builder
 {
-    public static class Resources
+    public class Resources
     {
         private int _foodCount;
         private int _woodCount;
@@ -19,23 +19,40 @@ namespace colony_builder
 
         public int GetResourceCount(string resource)
         {
-            if (resource == Constants.FOOD_ACTIONBAR_TEXT)
+            switch (resource)
             {
-                return GetFoodCount();
+                case Constants.FOOD_ACTIONBAR_TEXT:
+                    return GetFoodCount();
+                case Constants.WOOD_ACTIONBAR_TEXT:
+                    return GetWoodCount();
+                case Constants.STONE_ACTIONBAR_TEXT:
+                    return GetStoneCount();
+                case Constants.GOLD_TEXT:
+                    return GetGoldCount();
+                default:
+                    return Constants.ERROR;
             }
-            else if (resource == Constants.WOOD_ACTIONBAR_TEXT)
+        }
+
+        public void SetResourceCount(string resource, int newCount)
+        {
+            switch (resource)
             {
-                return GetWoodCount();
+                case Constants.FOOD_ACTIONBAR_TEXT:
+                    SetFoodCount(newCount);
+                    break;
+                case Constants.WOOD_ACTIONBAR_TEXT:
+                    SetWoodCount(newCount);
+                    break;
+                case Constants.STONE_ACTIONBAR_TEXT:
+                    SetStoneCount(newCount);
+                    break;
+                case Constants.GOLD_TEXT:
+                    SetGoldCount(newCount);
+                    break;
+                default:
+                    break;
             }
-            else if (resource == Constants.STONE_ACTIONBAR_TEXT)
-            {
-                return GetStoneCount();
-            }
-            else if (resource == Constants.GOLD_TEXT)
-            {
-                return GetGoldCount();
-            }
-            return -1;
         }
 
         private void SetFoodCount(int foodCount)

@@ -13,11 +13,16 @@ namespace colony_builder.Casting
 
             if (availableToBuild)
             {
-                SetHasActionIfPressed(Constants.AVAILABLE_TO_BUILD);
+                SetHasActionIfPressed(true);
             }
         }
 
         public override void DoAction()
+        {
+            
+        }
+
+        public override void Update()
         {
             
         }

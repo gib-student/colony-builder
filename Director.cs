@@ -12,12 +12,19 @@ namespace colony_builder
         private bool _keepPlaying = true;
         private Dictionary<string, List<Actor>> _cast;
         private Dictionary<string, List<Action>> _script;
+        Resources _resources;
+        EmployedVillagers _employedVillagers;
+        Population _population;
 
         public Director(Dictionary<string, List<Actor>> cast,
-            Dictionary<string, List<Action>> script)
+            Dictionary<string, List<Action>> script, Resources resources,
+            EmployedVillagers employedVillagers, Population population)
         {
             _cast = cast;
             _script = script;
+            _resources = resources;
+            _employedVillagers = employedVillagers;
+            _population = population;
         }
         /// <summary>
         /// This method starts the game and continues running until it is finished.
@@ -62,6 +69,10 @@ namespace colony_builder
         private bool IsGameOver()
         {
             // TODO: Determine game-end conditions. For now it is always true
+            if (_resources.GetResourceCount(Constants.FOOD_ACTIONBAR_TEXT) <= 0)
+            {
+                return true;
+            }
             return false;
         }
 
