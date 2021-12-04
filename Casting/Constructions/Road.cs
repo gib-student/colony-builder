@@ -25,5 +25,10 @@ namespace colony_builder.Casting
         {
             
         }
+
+        public override void Update()
+        {
+            
+        }
     }
 }

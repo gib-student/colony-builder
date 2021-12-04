@@ -6,13 +6,16 @@ namespace colony_builder.Casting
     {
         public Text(Point position, string text)
         {
-            // TODO
-            // SetImage(Constants.);
             SetPosition(position);
             SetText(text);
         }
 
         public override void DoAction()
+        {
+            
+        }
+
+        public override void Update()
         {
             
         }

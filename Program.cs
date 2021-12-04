@@ -11,6 +11,11 @@ namespace colony_builder
     {
         static void Main(string[] args)
         {
+            // Variables we will need for the whole program
+            Resources resources = new Resources();
+            EmployedVillagers employedVillagers = new EmployedVillagers();
+            Population population = new Population();
+
             // Create the cast
             Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
 
@@ -63,12 +68,12 @@ namespace colony_builder
             
             // Initial Resources
             cast["resources"] = new List<Actor>();
-            ResourcesText resources = new ResourcesText();
+            ResourcesText resourcesText = new ResourcesText(resources);
             FoodImg foodImg = new FoodImg();
             WoodImg woodImg = new WoodImg();
             StoneImg stoneImg = new StoneImg();
             GoldImg goldImg = new GoldImg();
-            cast["resources"].Add(resources);
+            cast["resources"].Add(resourcesText);
             cast["resources"].Add(foodImg);
             cast["resources"].Add(woodImg);
             cast["resources"].Add(stoneImg);
@@ -76,9 +81,9 @@ namespace colony_builder
 
             // Initial Population
             cast["population"] = new List<Actor>();
-            Population population = new Population();
+            PopulationText popText = new PopulationText(population);
             PopImg popImg = new PopImg();
-            cast["population"].Add(population);
+            cast["population"].Add(popText);
             cast["population"].Add(popImg);
 
             /// Action Bar
@@ -88,63 +93,70 @@ namespace colony_builder
                 Constants.WORKING_VILLAGERS_X, Constants.WORKING_VILLAGERS_Y),
                 Constants.WORKING_VILLAGRS_TEXT);
             // Horizontal Line
+
             // Food actors
             Text foodText = new Text(new Point(
                 Constants.RESOURCE_ACTIONBAR_TEXT_X, Constants.FOOD_ACTIONBAR_TEXT_Y),
                 Constants.FOOD_ACTIONBAR_TEXT);
             Button foodMinusButton = new Button(new Point(
                 Constants.MINUS_BUTTON_X, Constants.FOOD_BUTTONS_Y),
-                Constants.MINUS_BUTTON_TYPE, Constants.FOOD_ACTIONBAR_TEXT);
+                Constants.MINUS_BUTTON_TYPE, Constants.FOOD_ACTIONBAR_TEXT,
+                employedVillagers, resources);
             Button foodAddButton = new Button(new Point(
                 Constants.ADD_BUTTON_X, Constants.FOOD_BUTTONS_Y),
-                Constants.ADD_BUTTON_TYPE, Constants.FOOD_ACTIONBAR_TEXT);
+                Constants.ADD_BUTTON_TYPE, Constants.FOOD_ACTIONBAR_TEXT,
+                employedVillagers, resources);
             Text foodMinusSign = new Text(new Point(
                 Constants.MINUS_SIGN_X, Constants.FOOD_SIGNS_Y),
                 Constants.MINUS_SIGN);
             Text foodAddSign = new Text(new Point(
                 Constants.ADD_SIGN_X, Constants.FOOD_SIGNS_Y),
                 Constants.ADD_SIGN);
-            Text employedFoodNum = new Text(new Point(
+            EmployedFoodNum employedFoodNum = new EmployedFoodNum(new Point(
                 Constants.EMPLOYED_VALUE_X, Constants.FOOD_EMPLOYED_Y),
-                Constants.FOOD_EMPLOYED_INITIAL_VALUE.ToString());
+                employedVillagers);
             // Wood actors
             Text woodText = new Text(new Point(
                 Constants.RESOURCE_ACTIONBAR_TEXT_X, Constants.WOOD_ACTIONBAR_TEXT_Y),
                 Constants.WOOD_ACTIONBAR_TEXT);
             Button woodMinusButton = new Button(new Point(
                 Constants.MINUS_BUTTON_X, Constants.WOOD_BUTTONS_Y),
-                Constants.MINUS_BUTTON_TYPE, Constants.WOOD_ACTIONBAR_TEXT);
+                Constants.MINUS_BUTTON_TYPE, Constants.WOOD_ACTIONBAR_TEXT,
+                employedVillagers, resources);
             Button woodAddButton = new Button(new Point(
                 Constants.ADD_BUTTON_X, Constants.WOOD_BUTTONS_Y),
-                Constants.ADD_BUTTON_TYPE, Constants.WOOD_ACTIONBAR_TEXT);
+                Constants.ADD_BUTTON_TYPE, Constants.WOOD_ACTIONBAR_TEXT,
+                employedVillagers, resources);
             Text woodMinusSign = new Text(new Point(
                 Constants.MINUS_SIGN_X, Constants.WOOD_SIGNS_Y),
                 Constants.MINUS_SIGN);
             Text woodAddSign = new Text(new Point(
                 Constants.ADD_SIGN_X, Constants.WOOD_SIGNS_Y),
                 Constants.ADD_SIGN);
-            Text employedWoodNum = new Text(new Point(
+            EmployedWoodNum employedWoodNum = new EmployedWoodNum(new Point(
                 Constants.EMPLOYED_VALUE_X, Constants.WOOD_EMPLOYED_Y),
-                Constants.WOOD_EMPLOYED_INITIAL_VALUE.ToString());
+                employedVillagers);
             // Stone actors
             Text stoneText = new Text(new Point(
                 Constants.RESOURCE_ACTIONBAR_TEXT_X, Constants.STONE_ACTIONBAR_TEXT_Y),
                 Constants.STONE_ACTIONBAR_TEXT);
             Button stoneMinusButton = new Button(new Point(
                 Constants.MINUS_BUTTON_X, Constants.STONE_BUTTONS_Y),
-                Constants.MINUS_BUTTON_TYPE, Constants.STONE_ACTIONBAR_TEXT);
+                Constants.MINUS_BUTTON_TYPE, Constants.STONE_ACTIONBAR_TEXT,
+                employedVillagers, resources);
             Button stoneAddButton = new Button(new Point(
                 Constants.ADD_BUTTON_X, Constants.STONE_BUTTONS_Y),
-                Constants.ADD_BUTTON_TYPE, Constants.STONE_ACTIONBAR_TEXT);
+                Constants.ADD_BUTTON_TYPE, Constants.STONE_ACTIONBAR_TEXT,
+                employedVillagers, resources);
             Text stoneMinusSign = new Text(new Point(
                 Constants.MINUS_SIGN_X, Constants.STONE_SIGNS_Y),
                 Constants.MINUS_SIGN);
             Text stoneAddSign = new Text(new Point(
                 Constants.ADD_SIGN_X, Constants.STONE_SIGNS_Y),
                 Constants.ADD_SIGN);
-            Text employedStoneNum = new Text(new Point(
+            EmployedStoneNum employedStoneNum = new EmployedStoneNum(new Point(
                 Constants.EMPLOYED_VALUE_X, Constants.STONE_EMPLOYED_Y),
-                Constants.STONE_EMPLOYED_INITIAL_VALUE.ToString());
+                employedVillagers);
             // Unemployed actors
             Text unemployedText = new Text(new Point(
                 Constants.RESOURCE_ACTIONBAR_TEXT_X - Constants.RESOURCE_TEXT_X_INDENT, 
@@ -153,7 +165,7 @@ namespace colony_builder
             Text unemployedNum = new Text(new Point(
                 Constants.UNEMPLOYED_NUMVILLAGERS_X, 
                 Constants.UNEMPLOYED_NUMVILLAGERS_Y),
-                Constants.UNEMPLOYED_INITIAL_VALUE.ToString());
+                employedVillagers.GetUnemployed().ToString());
             
             /// Add them to the cast
             // Working villagers text
@@ -194,18 +206,25 @@ namespace colony_builder
             script["input"] = new List<Action>();
             script["update"] = new List<Action>();
             
-            DrawActorsAction drawActorsAction = new DrawActorsAction(outputService);
-            script["output"].Add(drawActorsAction);
-
             // TODO: Add all of the script
-
+            DrawActorsAction drawActorsAction = new DrawActorsAction(outputService);
+            ManageResourcesAction manageResourcesAction = 
+                new ManageResourcesAction(resources, employedVillagers);
+            ManageMouseInputAction manageMouseInputAction = 
+                new ManageMouseInputAction(inputService);
+            UpdateActorsAction updateActorsAction = new UpdateActorsAction();
+            
+            script["output"].Add(drawActorsAction);
+            script["update"].Add(manageMouseInputAction);
+            script["update"].Add(updateActorsAction);
+            
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y,
                 "Colony Builder", Constants.FRAME_RATE);
             audioService.StartAudio();
             // audioService.PlaySound(Constants.SOUND_START);
 
-            Director theDirector = new Director(cast, script);
+            Director theDirector = new Director(cast, script, resources, employedVillagers, population);
             theDirector.Direct();
         }
     }
