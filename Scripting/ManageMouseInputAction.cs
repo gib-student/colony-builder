@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using colony_builder.Casting;
@@ -50,13 +51,13 @@ namespace colony_builder.Scripting
         {
             int leftEdge = actor.GetLeftEdge();
             int rightEdge = actor.GetRightEdge();
-            int topEdge = actor.GetRightEdge();
+            int topEdge = actor.GetTopEdge();
             int bottomEdge = actor.GetBottomEdge();
             int mouseX = _mousePosition.GetX();
             int mouseY = _mousePosition.GetY();
-
+            
             if (mouseX >= leftEdge && mouseX <= rightEdge && 
-                mouseY >= bottomEdge && mouseY <= topEdge)
+                mouseY <= bottomEdge && mouseY >= topEdge)
             {
                 if (Debug.debug)
                 {
