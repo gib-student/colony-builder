@@ -9,6 +9,11 @@ namespace colony_builder
         private int _stoneCount;
         private int _goldCount;
 
+        private const double _foodProductionRatePerVillager  = 0.004;
+        private const double _woodProductionRatePerVillager  = 0.003;
+        private const double _stoneProductionRatePerVillager = 0.003;
+        private const double _foodDepletionRatePerVillager   = -.001;
+
         public Resources()
         {
             _foodCount = Constants.INITIAL_FOOD;
@@ -93,6 +98,26 @@ namespace colony_builder
         private int GetGoldCount()
         {
             return _goldCount;
+        }
+
+        public double GetFoodProductionRate(int employedOnFood)
+        {
+            return _foodProductionRatePerVillager * (double)employedOnFood;
+        }
+
+        public double GetWoodProductionRate(int employedOnWood)
+        {
+            return _woodProductionRatePerVillager * (double)employedOnWood;
+        }
+
+        public double GetStoneProductionRate(int employedOnStone)
+        {
+            return _stoneProductionRatePerVillager * (double)employedOnStone;
+        }
+
+        public double GetHungerRate(int numVillagers)
+        {
+            return _foodDepletionRatePerVillager * (double)numVillagers;
         }
     }
 }

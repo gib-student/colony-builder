@@ -7,12 +7,13 @@ namespace colony_builder.Casting
         private int _employedFoodNum;
         EmployedVillagers _employedVillagers;
         
-        public EmployedFoodNum(Point position, EmployedVillagers employedVillagers)
+        public EmployedFoodNum(EmployedVillagers employedVillagers)
         {
             _employedVillagers = employedVillagers;
             _employedFoodNum = employedVillagers.GetEmployedOnFood();
             SetText(_employedFoodNum.ToString());
-            SetPosition(position);
+            SetPosition(new Point(
+                Constants.EMPLOYED_VALUE_X, Constants.FOOD_EMPLOYED_Y));
         }
 
         public override void DoAction()

@@ -35,39 +35,16 @@ namespace colony_builder.Casting
                 switch (_resourceType)
                 {
                     case Constants.FOOD_ACTIONBAR_TEXT:
-                        if (_resources.GetResourceCount(Constants.FOOD_ACTIONBAR_TEXT) > 0)
-                        {
-                            _employedVillagers.DecrementEmployedOnFood();
-                            _employedVillagers.IncrementUnemployed();
-                            if (Debug.debug)
-                            {
-                                Console.WriteLine("\tEmployed food villagers decremented and unemployed incremented");
-                            }
-                        }
+                        _employedVillagers.MinusEmployedOnFoodButton();
                         break;
-                    case Constants.WOOD_ACTIONBAR_TEXT:
-                        if (_resources.GetResourceCount(Constants.WOOD_ACTIONBAR_TEXT) > 0)
-                        {
-                            _employedVillagers.DecrementEmployedOnWood();
-                            _employedVillagers.IncrementUnemployed();
-                            if (Debug.debug)
-                            {    
-                                Console.WriteLine("\tEmployed wood villagers decremented and unemployed incremented");
 
-                            }
-                        }
+                    case Constants.WOOD_ACTIONBAR_TEXT:
+                        _employedVillagers.MinusEmployedOnWoodButton();
+
                         break;
                     case Constants.STONE_ACTIONBAR_TEXT:
-                        if (_resources.GetResourceCount(Constants.STONE_ACTIONBAR_TEXT) > 0)
-                        {
-                            _employedVillagers.DecrementEmployedOnStone();
-                            _employedVillagers.IncrementUnemployed();
-                            if (Debug.debug)
-                            {
-                                Console.WriteLine("\tEmployed stone villagers decremented and unemployed incremented");
-   
-                            }
-                        }
+                        _employedVillagers.MinusEmployedOnStoneButton();
+
                         break;
                     default:
                         break;
@@ -75,38 +52,22 @@ namespace colony_builder.Casting
             }
             else if (_buttonType == Constants.ADD_BUTTON_TYPE)
             {
-                if (_employedVillagers.GetUnemployed() > 0)
+                switch (_resourceType)
                 {
-                    switch (_resourceType)
-                    {
-                        case Constants.FOOD_ACTIONBAR_TEXT:
-                            _employedVillagers.IncrementEmployedOnFood();
-                            _employedVillagers.DecrementUnemployed();
-                            if (Debug.debug)
-                            {
-                                Console.WriteLine("\tFood incremented and unemployed decremented");
-                            }
-                            break;
-                        case Constants.WOOD_ACTIONBAR_TEXT:
-                            _employedVillagers.IncrementEmployedOnWood();
-                            _employedVillagers.DecrementUnemployed();
-                            if (Debug.debug)
-                            {
-                                Console.WriteLine("\tWood incremented and unemployed decremented");
-                            }
+                    case Constants.FOOD_ACTIONBAR_TEXT:
+                        _employedVillagers.AddEmployedOnFoodButton();
+                        break;
 
-                            break;
-                        case Constants.STONE_ACTIONBAR_TEXT:
-                            _employedVillagers.IncrementEmployedOnStone();
-                            _employedVillagers.DecrementUnemployed();
-                            if (Debug.debug)
-                            {
-                                Console.WriteLine("\tStoneincremented and unemployed decremented");   
-                            }
-                            break;
-                        default:
-                            break;
-                    }
+                    case Constants.WOOD_ACTIONBAR_TEXT:
+                        _employedVillagers.AddEmployedOnWoodButton();
+                        break;
+                        
+                    case Constants.STONE_ACTIONBAR_TEXT:
+                        _employedVillagers.AddEmployedOnStoneButton();
+
+                        break;
+                    default:
+                        break;
                 }
             } 
         }

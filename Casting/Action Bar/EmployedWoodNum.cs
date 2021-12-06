@@ -7,12 +7,13 @@ namespace colony_builder.Casting
         private int _employedWoodNum;
         EmployedVillagers _employedVillagers;
 
-        public EmployedWoodNum(Point position,EmployedVillagers employedVillagers)
+        public EmployedWoodNum(EmployedVillagers employedVillagers)
         {
             _employedVillagers = employedVillagers;
             _employedWoodNum = _employedVillagers.GetEmployedOnWood();
             SetText(_employedWoodNum.ToString());
-            SetPosition(position);
+            SetPosition(new Point(
+                Constants.EMPLOYED_VALUE_X, Constants.WOOD_EMPLOYED_Y));
         }
 
         public override void DoAction()

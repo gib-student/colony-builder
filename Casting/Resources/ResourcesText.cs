@@ -20,7 +20,6 @@ namespace colony_builder.Casting
 
         private void UpdateResourcesText()
         {
-            UpdateResourcesValues();
             SetText($"{_foodCount}      {_woodCount}      {_stoneCount}      {_goldCount}");
         }
 
@@ -39,7 +38,12 @@ namespace colony_builder.Casting
 
         public override void Update()
         {
-            UpdateResourcesText();
+            if (Debug.debug)
+            {
+                // Console.WriteLine("ResourcesText Updated");
+            }
+            UpdateResourcesValues();
+            UpdateResourcesText();   
         }
     }
 }

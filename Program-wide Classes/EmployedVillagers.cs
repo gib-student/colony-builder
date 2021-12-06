@@ -9,12 +9,16 @@ namespace colony_builder
       private int _employedOnStone;
       private int _unemployed;
 
-      public EmployedVillagers()
+      Constructions _constructions;
+
+      public EmployedVillagers(Constructions constructions)
       {
          _employedOnFood = Constants.FOOD_EMPLOYED_INITIAL_VALUE;
          _employedOnWood = Constants.WOOD_EMPLOYED_INITIAL_VALUE;
          _employedOnStone = Constants.STONE_EMPLOYED_INITIAL_VALUE;
          _unemployed = Constants.UNEMPLOYED_INITIAL_VALUE;
+
+         _constructions = constructions;
       }
 
       public int GetEmployedValue(string resource)
@@ -31,6 +35,84 @@ namespace colony_builder
                return GetUnemployed();
             default:
                return Constants.ERROR;
+         }
+      }
+
+      public void MinusEmployedOnFoodButton()
+      {
+         if (GetEmployedOnFood() > 0)
+         {
+            DecrementEmployedOnFood();
+            IncrementUnemployed();
+            if (Debug.debug)
+            {
+               Console.WriteLine("\tEmployed food villagers decremented and unemployed incremented");
+            }
+         }
+      }
+
+      public void MinusEmployedOnWoodButton()
+      {
+         if (GetEmployedOnWood() > 0)
+         {
+            DecrementEmployedOnWood();
+            IncrementUnemployed();
+            if (Debug.debug)
+            {    
+               Console.WriteLine("\tEmployed wood villagers decremented and unemployed incremented");
+            }
+         }
+      }
+
+      public void MinusEmployedOnStoneButton()
+      {
+         if (GetEmployedOnStone() > 0)
+         {
+            DecrementEmployedOnStone();
+            IncrementUnemployed();
+            if (Debug.debug)
+            {
+               Console.WriteLine("\tEmployed stone villagers decremented and unemployed incremented");
+            }
+         }
+      }
+
+      public void AddEmployedOnFoodButton()
+      {
+         if (GetUnemployed() > 0 && _constructions.FarmSpaceAvailable())
+         {
+            IncrementEmployedOnFood();
+            DecrementUnemployed();
+            if (Debug.debug)
+            {
+               Console.WriteLine("\tFood incremented and unemployed decremented");
+            }
+         }
+      }
+
+      public void AddEmployedOnWoodButton()
+      {
+         if (GetUnemployed() > 0)
+         {
+            IncrementEmployedOnWood();
+            DecrementUnemployed();
+            if (Debug.debug)
+            {
+               Console.WriteLine("\tWood incremented and unemployed decremented");
+            }
+         }
+      }
+
+      public void AddEmployedOnStoneButton()
+      {
+         if (GetUnemployed() > 0 && _constructions.MineSpaceAvailable())
+         {
+            IncrementEmployedOnStone();
+            DecrementUnemployed();
+            if (Debug.debug)
+            {
+               Console.WriteLine("\tStoneincremented and unemployed decremented");   
+            }
          }
       }
 

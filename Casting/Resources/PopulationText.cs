@@ -18,17 +18,18 @@ namespace colony_builder.Casting
         public void UpdatePopulationText()
         {
             _populationCount = _population.GetPopulation();
-            SetText(_population.ToString());
+            SetText(_populationCount.ToString());
         }
 
         public override void DoAction()
         {
-            
+
         }
 
         public override void Update()
         {
-            
+            _populationCount = _population.GetPopulation();
+            SetText(_populationCount.ToString());
         }
     }
 }

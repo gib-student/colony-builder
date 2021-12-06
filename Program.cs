@@ -11,9 +11,10 @@ namespace colony_builder
     {
         static void Main(string[] args)
         {
-            // Variables we will need for the whole program
+            // Variables we will need for the whole class
             Resources resources = new Resources();
-            EmployedVillagers employedVillagers = new EmployedVillagers();
+            Constructions constructions = new Constructions();
+            EmployedVillagers employedVillagers = new EmployedVillagers(constructions);
             Population population = new Population();
 
             // Create the cast
@@ -112,9 +113,7 @@ namespace colony_builder
             Text foodAddSign = new Text(new Point(
                 Constants.ADD_SIGN_X, Constants.FOOD_SIGNS_Y),
                 Constants.ADD_SIGN);
-            EmployedFoodNum employedFoodNum = new EmployedFoodNum(new Point(
-                Constants.EMPLOYED_VALUE_X, Constants.FOOD_EMPLOYED_Y),
-                employedVillagers);
+            EmployedFoodNum employedFoodNum = new EmployedFoodNum(employedVillagers);
             // Wood actors
             Text woodText = new Text(new Point(
                 Constants.RESOURCE_ACTIONBAR_TEXT_X, Constants.WOOD_ACTIONBAR_TEXT_Y),
@@ -133,9 +132,7 @@ namespace colony_builder
             Text woodAddSign = new Text(new Point(
                 Constants.ADD_SIGN_X, Constants.WOOD_SIGNS_Y),
                 Constants.ADD_SIGN);
-            EmployedWoodNum employedWoodNum = new EmployedWoodNum(new Point(
-                Constants.EMPLOYED_VALUE_X, Constants.WOOD_EMPLOYED_Y),
-                employedVillagers);
+            EmployedWoodNum employedWoodNum = new EmployedWoodNum(employedVillagers);
             // Stone actors
             Text stoneText = new Text(new Point(
                 Constants.RESOURCE_ACTIONBAR_TEXT_X, Constants.STONE_ACTIONBAR_TEXT_Y),
@@ -154,18 +151,13 @@ namespace colony_builder
             Text stoneAddSign = new Text(new Point(
                 Constants.ADD_SIGN_X, Constants.STONE_SIGNS_Y),
                 Constants.ADD_SIGN);
-            EmployedStoneNum employedStoneNum = new EmployedStoneNum(new Point(
-                Constants.EMPLOYED_VALUE_X, Constants.STONE_EMPLOYED_Y),
-                employedVillagers);
+            EmployedStoneNum employedStoneNum = new EmployedStoneNum(employedVillagers);
             // Unemployed actors
             Text unemployedText = new Text(new Point(
                 Constants.RESOURCE_ACTIONBAR_TEXT_X - Constants.RESOURCE_TEXT_X_INDENT, 
                 Constants.UNEMPLOYED_TEXT_Y),
                 Constants.UNEMPLOYED_TEXT);
-            Text unemployedNum = new Text(new Point(
-                Constants.UNEMPLOYED_NUMVILLAGERS_X, 
-                Constants.UNEMPLOYED_NUMVILLAGERS_Y),
-                employedVillagers.GetUnemployed().ToString());
+            UnemployedNum unemployedNum = new UnemployedNum(employedVillagers);
             
             /// Add them to the cast
             // Working villagers text
@@ -208,15 +200,17 @@ namespace colony_builder
             
             // TODO: Add all of the script
             DrawActorsAction drawActorsAction = new DrawActorsAction(outputService);
-            ManageResourcesAction manageResourcesAction = 
-                new ManageResourcesAction(resources, employedVillagers);
             ManageMouseInputAction manageMouseInputAction = 
                 new ManageMouseInputAction(inputService);
             UpdateActorsAction updateActorsAction = new UpdateActorsAction();
+            ManageResourcesAction manageResourcesAction = 
+                new ManageResourcesAction(resources, employedVillagers, 
+                population);
             
             script["output"].Add(drawActorsAction);
             script["update"].Add(manageMouseInputAction);
             script["update"].Add(updateActorsAction);
+            script["update"].Add(manageResourcesAction);
             
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y,
