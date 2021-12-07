@@ -12,16 +12,19 @@ namespace colony_builder
         private bool _keepPlaying = true;
         private Dictionary<string, List<Actor>> _cast;
         private Dictionary<string, List<Action>> _script;
+        OutputService _outputService;
         Resources _resources;
         EmployedVillagers _employedVillagers;
         Population _population;
 
         public Director(Dictionary<string, List<Actor>> cast,
-            Dictionary<string, List<Action>> script, Resources resources,
-            EmployedVillagers employedVillagers, Population population)
+            Dictionary<string, List<Action>> script, OutputService outputService,
+            Resources resources, EmployedVillagers employedVillagers,
+            Population population)
         {
             _cast = cast;
             _script = script;
+            _outputService = outputService;
             _resources = resources;
             _employedVillagers = employedVillagers;
             _population = population;
@@ -81,7 +84,21 @@ namespace colony_builder
         /// </summary>
         private void EndGame()
         {
+            Text gameOverText = new Text(new Point(
+                Constants.GAME_OVER_TEXT_X, Constants.GAME_OVER_TEXT_Y),
+                Constants.GAME_OVER_TEXT);
+            _cast["gameOver"] = new List<Actor>();
+            _cast["gameOver"].Add(gameOverText);
 
+            while (!Raylib_cs.Raylib.WindowShouldClose())
+            {
+                DisplayLastFrame();
+            }
+        }
+
+        private void DisplayLastFrame()
+        {
+            _script["output"][0].Execute(_cast);
         }
     }
 }

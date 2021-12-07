@@ -218,7 +218,8 @@ namespace colony_builder
             audioService.StartAudio();
             // audioService.PlaySound(Constants.SOUND_START);
 
-            Director theDirector = new Director(cast, script, resources, employedVillagers, population);
+            Director theDirector = new Director(cast, script, outputService, 
+                resources, employedVillagers, population);
             theDirector.Direct();
         }
     }

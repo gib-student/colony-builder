@@ -79,7 +79,8 @@ namespace colony_builder
 
       public void AddEmployedOnFoodButton()
       {
-         if (GetUnemployed() > 0 && _constructions.FarmSpaceAvailable())
+         if (GetUnemployed() > 0 && 
+            _constructions.FarmSpaceAvailable(GetEmployedOnFood()))
          {
             IncrementEmployedOnFood();
             DecrementUnemployed();
@@ -105,7 +106,8 @@ namespace colony_builder
 
       public void AddEmployedOnStoneButton()
       {
-         if (GetUnemployed() > 0 && _constructions.MineSpaceAvailable())
+         if (GetUnemployed() > 0 && 
+            _constructions.MineSpaceAvailable(GetEmployedOnStone()))
          {
             IncrementEmployedOnStone();
             DecrementUnemployed();
