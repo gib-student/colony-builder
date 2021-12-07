@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using colony_builder.Casting;
 using colony_builder.Services;
 using colony_builder.Scripting;
-using colony_builder.Logic;
 
 namespace colony_builder
 {

@@ -38,10 +38,6 @@ namespace colony_builder.Casting
 
         public override void Update()
         {
-            if (Debug.debug)
-            {
-                // Console.WriteLine("ResourcesText Updated");
-            }
             UpdateResourcesValues();
             UpdateResourcesText();   
         }

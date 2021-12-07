@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using colony_builder.Services;
 using colony_builder.Scripting;
-using colony_builder.Logic;
 using colony_builder.Casting;
 
 namespace colony_builder
@@ -193,6 +192,7 @@ namespace colony_builder
             OutputService outputService = new OutputService();
             InputService inputService = new InputService();
             AudioService audioService = new AudioService();
+            TimeService timeService = new TimeService();
 
             script["output"] = new List<Action>();
             script["input"] = new List<Action>();
@@ -205,12 +205,15 @@ namespace colony_builder
             UpdateActorsAction updateActorsAction = new UpdateActorsAction();
             ManageResourcesAction manageResourcesAction = 
                 new ManageResourcesAction(resources, employedVillagers, 
-                population);
+                population, timeService);
+            ManagePopulationAction managePopulationAction = new ManagePopulationAction(
+                population, resources, timeService);
             
             script["output"].Add(drawActorsAction);
             script["update"].Add(manageMouseInputAction);
             script["update"].Add(updateActorsAction);
             script["update"].Add(manageResourcesAction);
+            script["update"].Add(managePopulationAction);
             
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y,

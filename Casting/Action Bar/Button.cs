@@ -26,10 +26,6 @@ namespace colony_builder.Casting
 
         public override void DoAction()
         {
-            if (Debug.debug)
-            {
-                Console.WriteLine($"Button action performed: {_buttonType}, {_resourceType}");
-            }
             if (_buttonType == Constants.MINUS_BUTTON_TYPE)
             {
                 switch (_resourceType)

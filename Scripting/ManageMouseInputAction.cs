@@ -35,10 +35,6 @@ namespace colony_builder.Scripting
                             if (actor.HasActionIfPressed())
                             {
                                 actor.DoAction();
-                                if (Debug.debug)
-                                {
-                                    Console.WriteLine("ManageMouseInputAction: Actor action performed");
-                                }
                             }
                         }
                     }
@@ -59,20 +55,6 @@ namespace colony_builder.Scripting
             if (mouseX >= leftEdge && mouseX <= rightEdge && 
                 mouseY <= bottomEdge && mouseY >= topEdge)
             {
-                if (Debug.debug)
-                {
-                    Console.WriteLine("\nMouseInsideActor returns true");
-                    Console.WriteLine($"\tleftEdge: {leftEdge}");
-                    Console.WriteLine($"\trightEdge: {rightEdge}");
-                    Console.WriteLine($"\ttopEdge: {topEdge}");
-                    Console.WriteLine($"\tbottomEdge: {bottomEdge}");
-                    Console.WriteLine($"\tmouseX: {mouseX}");
-                    Console.WriteLine($"\tmouseY: {mouseY}");
-                    Console.WriteLine($"\tActor Text: {actor.GetText()}");
-                    Console.WriteLine($"\tActor has action?: {actor.HasActionIfPressed()}");
-                    Console.WriteLine($"\tActor image filepath: {actor.GetImage()}");
-                    Console.WriteLine();
-                }
                 return true;
             }
             return false;

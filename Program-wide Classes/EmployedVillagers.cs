@@ -44,10 +44,6 @@ namespace colony_builder
          {
             DecrementEmployedOnFood();
             IncrementUnemployed();
-            if (Debug.debug)
-            {
-               Console.WriteLine("\tEmployed food villagers decremented and unemployed incremented");
-            }
          }
       }
 
@@ -57,10 +53,6 @@ namespace colony_builder
          {
             DecrementEmployedOnWood();
             IncrementUnemployed();
-            if (Debug.debug)
-            {    
-               Console.WriteLine("\tEmployed wood villagers decremented and unemployed incremented");
-            }
          }
       }
 
@@ -70,10 +62,6 @@ namespace colony_builder
          {
             DecrementEmployedOnStone();
             IncrementUnemployed();
-            if (Debug.debug)
-            {
-               Console.WriteLine("\tEmployed stone villagers decremented and unemployed incremented");
-            }
          }
       }
 
@@ -84,10 +72,6 @@ namespace colony_builder
          {
             IncrementEmployedOnFood();
             DecrementUnemployed();
-            if (Debug.debug)
-            {
-               Console.WriteLine("\tFood incremented and unemployed decremented");
-            }
          }
       }
 
@@ -97,10 +81,6 @@ namespace colony_builder
          {
             IncrementEmployedOnWood();
             DecrementUnemployed();
-            if (Debug.debug)
-            {
-               Console.WriteLine("\tWood incremented and unemployed decremented");
-            }
          }
       }
 
@@ -111,10 +91,6 @@ namespace colony_builder
          {
             IncrementEmployedOnStone();
             DecrementUnemployed();
-            if (Debug.debug)
-            {
-               Console.WriteLine("\tStoneincremented and unemployed decremented");   
-            }
          }
       }
 
