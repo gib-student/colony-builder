@@ -10,15 +10,19 @@ namespace colony_builder.Scripting
         Population _population;
         Resources _resources;
         TimeService _timeService;
+        int counter = 0;
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
+            counter++;
             // Increase the population according to the population growth rate.
             // If the food is less than 20% of the population, then the 
             // population will not naturally increase,
             int foodCount = _resources.GetResourceCount(Constants.FOOD_ACTIONBAR_TEXT);
             int populationCount = _population.GetPopulation();
             bool canReproduce = foodCount > (0.2 * populationCount);
+            bool secondHasPassed = _timeService.SecondHasPassed();
+            Console.WriteLine($"\tManagePopulationAction: secondHasPassed: {secondHasPassed}, counter: {counter}");
 
             if (_timeService.SecondHasPassed())
             {

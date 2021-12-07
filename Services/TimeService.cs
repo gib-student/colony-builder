@@ -5,6 +5,8 @@ namespace colony_builder.Services
     public class TimeService
     {
         private double _previousTimeElapsed;
+        double _timeElapsedTotal;
+        int counter = 0;
 
         public TimeService()
         {
@@ -13,19 +15,24 @@ namespace colony_builder.Services
 
         public bool SecondHasPassed()
         {
-            double _timeElapsedTotal = Raylib_cs.Raylib.GetTime();
+            _timeElapsedTotal = Raylib_cs.Raylib.GetTime();
             double dtime = _timeElapsedTotal - _previousTimeElapsed;
             if (dtime >= 1)
             {
+                counter++;
                 if (Debug.debug)
                 {
-                    Console.WriteLine($"TimeService: secondHasPassed: {true}");
+                    Console.WriteLine($"\tTimeService: secondHasPassed: {true}");
                 }
-                _previousTimeElapsed = _timeElapsedTotal;
                 return true;
             }
             
             return false;
+        }
+
+        public void UpdatePreviousTime()
+        {
+            _previousTimeElapsed = Raylib_cs.Raylib.GetTime();
         }
     }
 }

@@ -222,7 +222,7 @@ namespace colony_builder
             // audioService.PlaySound(Constants.SOUND_START);
 
             Director theDirector = new Director(cast, script, outputService, 
-                resources, employedVillagers, population);
+                timeService, resources, employedVillagers, population);
             theDirector.Direct();
         }
     }
