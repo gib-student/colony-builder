@@ -23,10 +23,6 @@ namespace colony_builder.Casting
 
         public override void Update()
         {
-            if (Debug.debug && _employedFoodNum != _employedVillagers.GetEmployedOnFood())
-            {
-                Console.WriteLine("EmployedFoodNum updated");                    
-            }
             _employedFoodNum = _employedVillagers.GetEmployedOnFood();
             SetText(_employedFoodNum.ToString());
         }

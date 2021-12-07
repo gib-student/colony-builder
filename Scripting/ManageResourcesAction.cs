@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using colony_builder.Casting;
-using colony_builder.Logic;
+using colony_builder.Services;
 
 namespace colony_builder.Scripting
 {
@@ -10,24 +10,12 @@ namespace colony_builder.Scripting
         Resources _resources;
         EmployedVillagers _employedVillagers;
         Population _population;
-
-        double _timeElapsedTotal;
-        double _previousTimeElapsed = 0;
+        TimeService _timeService;
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
-            _timeElapsedTotal = Raylib_cs.Raylib.GetTime();
-            if (Debug.debug)
+            if (_timeService.SecondHasPassed())
             {
-                // Console.WriteLine($"ManageResourcesAction: _timeElapsedTotal: {_timeElapsedTotal}");
-                // Console.WriteLine($"\t_previousTimeElapsed: {_previousTimeElapsed}");
-            }
-            if (SecondHasPassed())
-            {
-                if (Debug.debug)
-                {
-                    Console.WriteLine($"MangeResourcesAction: Second has passed");
-                }
                 List<string> resourceNames = new List<string>
                 {
                     Constants.FOOD_ACTIONBAR_TEXT, Constants.WOOD_ACTIONBAR_TEXT,
@@ -39,23 +27,12 @@ namespace colony_builder.Scripting
         }
         
         public ManageResourcesAction(Resources resources, EmployedVillagers employedVillagers,
-            Population population)
+            Population population, TimeService timeService)
         {
             _resources = resources;
             _employedVillagers = employedVillagers;
             _population = population;
-        }
-
-        private bool SecondHasPassed()
-        {
-            double dtime = _timeElapsedTotal - _previousTimeElapsed;
-            if (dtime >= 1)
-            {
-                _previousTimeElapsed = _timeElapsedTotal;
-                return true;
-            }
-
-            return false;
+            _timeService = timeService;
         }
         
         private void AddResources(List<string> resourceNames)

@@ -21,5 +21,11 @@ namespace colony_builder
         {
             _populationCount = newPopCount;
         }
+
+        public void HaveChildren()
+        {
+            double newPopCount = _populationCount + (_populationCount * _populationGrowthRate);
+            _populationCount = (int)newPopCount;
+        }
     }
 }

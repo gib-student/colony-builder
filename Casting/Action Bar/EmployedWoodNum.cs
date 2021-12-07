@@ -23,10 +23,6 @@ namespace colony_builder.Casting
 
         public override void Update()
         {
-            if (Debug.debug && _employedWoodNum != _employedVillagers.GetEmployedOnWood())
-            {
-                Console.WriteLine("EmployedWoodNum updated");                    
-            }
             _employedWoodNum = _employedVillagers.GetEmployedOnWood();
             SetText(_employedWoodNum.ToString());
         }

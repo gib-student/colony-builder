@@ -23,10 +23,6 @@ namespace colony_builder.Casting
 
         public override void Update()
         {
-            if (Debug.debug && _employedStoneNum != _employedVillagers.GetEmployedOnStone())
-            {
-                Console.WriteLine("EmployedStoneNum updated");
-            }
             _employedStoneNum = _employedVillagers.GetEmployedOnStone();
             SetText(_employedStoneNum.ToString());
         }
