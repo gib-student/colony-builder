@@ -12,18 +12,20 @@ namespace colony_builder
         private Dictionary<string, List<Actor>> _cast;
         private Dictionary<string, List<Action>> _script;
         OutputService _outputService;
+        TimeService _timeService;
         Resources _resources;
         EmployedVillagers _employedVillagers;
         Population _population;
 
         public Director(Dictionary<string, List<Actor>> cast,
             Dictionary<string, List<Action>> script, OutputService outputService,
-            Resources resources, EmployedVillagers employedVillagers,
-            Population population)
+            TimeService timeService, Resources resources, 
+            EmployedVillagers employedVillagers, Population population)
         {
             _cast = cast;
             _script = script;
             _outputService = outputService;
+            _timeService = timeService;
             _resources = resources;
             _employedVillagers = employedVillagers;
             _population = population;
@@ -33,8 +35,11 @@ namespace colony_builder
         /// </summary>
         public void Direct()
         {
+            int counter = 0;
             while (_keepPlaying)
             {
+                counter++;
+                Console.WriteLine($"\n  Director: counter: {counter}");
                 CueAction("input");
                 CueAction("update");
                 CueAction("output");
@@ -47,6 +52,11 @@ namespace colony_builder
                 {
                     _keepPlaying = false;
                     EndGame();
+                }
+                
+                if (_timeService.SecondHasPassed())
+                {
+                    _timeService.UpdatePreviousTime();
                 }
             }
         }

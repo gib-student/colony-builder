@@ -5,7 +5,7 @@ namespace colony_builder
     public class Population
     {
         private int _populationCount;
-        private const double _populationGrowthRate = 1.001;
+        private const double _populationGrowthRate = 1.00000000001;
         
         public Population()
         {
