@@ -6,16 +6,15 @@ namespace colony_builder
     public class Constructions
     {
         // Settlements
-        bool _defaultSettlementBuilt;
+        private bool _defaultSettlementBuilt;
         private bool _settlement2Built;
         private bool _settlement3Built;
         private bool _settlement4Built;
         private bool _settlement5Built;
-
-        private Dictionary<string, bool> _settlements = new Dictionary<string, bool>();
+        private List<bool> _settlementsBuilt = new List<bool>();
+        private const int _maxVillagersPerSettlement = 100;
 
         // Roads
-
         private bool _defaultRoadBuilt;
         private bool _road2Built;
         private bool _road3Built;
@@ -26,9 +25,9 @@ namespace colony_builder
         private bool _road8Built;
         private bool _road9Built;
         private bool _road10Built;
+        private List<bool> _roadsBuilt = new List<bool>();
 
         // Farms
-        private const int _maxVillagersPerFarm = 20;
         private bool _defaultFarmBuilt;
         private bool _farm2Built;
         private bool _farm3Built;
@@ -38,9 +37,10 @@ namespace colony_builder
         private bool _farm7Built;
         private bool _farm8Built;
         private bool _farm9Built;
+        private List<bool> _farmsBuilt = new List<bool>();
+        private const int _maxVillagersPerFarm = 20;
 
         // Mines
-        private const int _maxVillagersPerMine = 20;
         private bool _defaultMineBuilt;
         private bool _mine2Built;
         private bool _mine3Built;
@@ -48,6 +48,8 @@ namespace colony_builder
         private bool _mine5Built;
         private bool _mine6Built;
         private bool _mine7Built;
+        private List<bool> _minesBuilt = new List<bool>();
+        private const int _maxVillagersPerMine = 20;
 
         public Constructions()
         {
@@ -56,6 +58,11 @@ namespace colony_builder
             _settlement3Built = false;
             _settlement4Built = false;
             _settlement5Built = false;
+            _settlementsBuilt.Add(_defaultSettlementBuilt);
+            _settlementsBuilt.Add(_settlement2Built);
+            _settlementsBuilt.Add(_settlement3Built);
+            _settlementsBuilt.Add(_settlement4Built);
+            _settlementsBuilt.Add(_settlement5Built);
 
             _defaultRoadBuilt = true;
             _road2Built = false;
@@ -67,6 +74,16 @@ namespace colony_builder
             _road8Built = false;
             _road9Built = false;
             _road10Built = false;
+            _roadsBuilt.Add(_defaultRoadBuilt);
+            _roadsBuilt.Add(_road2Built);
+            _roadsBuilt.Add(_road3Built);
+            _roadsBuilt.Add(_road4Built);
+            _roadsBuilt.Add(_road5Built);
+            _roadsBuilt.Add(_road6Built);
+            _roadsBuilt.Add(_road7Built);
+            _roadsBuilt.Add(_road8Built);
+            _roadsBuilt.Add(_road9Built);
+            _roadsBuilt.Add(_road10Built);
 
             _defaultFarmBuilt = true;
             _farm2Built = false;
@@ -77,6 +94,15 @@ namespace colony_builder
             _farm7Built = false;
             _farm8Built = false;
             _farm9Built = false;
+            _farmsBuilt.Add(_defaultFarmBuilt);
+            _farmsBuilt.Add(_farm2Built);
+            _farmsBuilt.Add(_farm3Built);
+            _farmsBuilt.Add(_farm4Built);
+            _farmsBuilt.Add(_farm5Built);
+            _farmsBuilt.Add(_farm6Built);
+            _farmsBuilt.Add(_farm7Built);
+            _farmsBuilt.Add(_farm8Built);
+            _farmsBuilt.Add(_farm9Built);
 
             _defaultMineBuilt = true;
             _mine2Built = false;
@@ -85,16 +111,44 @@ namespace colony_builder
             _mine5Built = false;
             _mine6Built = false;
             _mine7Built = false;
+            _minesBuilt.Add(_defaultMineBuilt);
+            _minesBuilt.Add(_mine2Built);
+            _minesBuilt.Add(_mine3Built);
+            _minesBuilt.Add(_mine4Built);
+            _minesBuilt.Add(_mine5Built);
+            _minesBuilt.Add(_mine6Built);
+            _minesBuilt.Add(_mine7Built);
+
         }
 
-        public bool FarmSpaceAvailable()
+        public bool FarmSpaceAvailable(int farmSpaceTaken)
         {
-            throw new NotImplementedException();
+            int numFarmsBuilt = 0;
+            foreach (bool farmBuilt in _farmsBuilt)
+            {
+                if (farmBuilt)
+                {
+                    numFarmsBuilt++;
+                }
+            }
+
+            int totalFarmSpace = numFarmsBuilt * _maxVillagersPerFarm;
+            return farmSpaceTaken < totalFarmSpace;
         }
         
-        public bool MineSpaceAvailable()
+        public bool MineSpaceAvailable(int mineSpaceTaken)
         {
-            throw new NotImplementedException();
+            int numMinesBuilt = 0;
+            foreach (bool mineBuilt in _minesBuilt)
+            {
+                if (mineBuilt)
+                {
+                    numMinesBuilt++;
+                }
+            }
+
+            int totalMineSpace = numMinesBuilt * _maxVillagersPerMine;
+            return mineSpaceTaken < totalMineSpace;
         }
     }
 }

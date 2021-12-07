@@ -4,21 +4,22 @@ namespace colony_builder
 {
     public class Population
     {
-        private int _population;
+        private int _populationCount;
+        private const double _populationGrowthRate = 1.001;
         
         public Population()
         {
-            _population = Constants.POP_INITIAL;
+            _populationCount = Constants.POP_INITIAL;
         }
 
         public int GetPopulation()
         {
-            return _population;
+            return _populationCount;
         }
 
         public void SetPoplation(int newPopCount)
         {
-            _population = newPopCount;
+            _populationCount = newPopCount;
         }
     }
 }

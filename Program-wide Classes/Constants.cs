@@ -147,6 +147,11 @@ namespace colony_builder
         public const int UNEMPLOYED_NUMVILLAGERS_X = RESOURCE_ACTIONBAR_TEXT_X + 15;
         public const int UNEMPLOYED_NUMVILLAGERS_Y = UNEMPLOYED_TEXT_Y + RESOURCE_TEXT_BUTTONS_VERTICAL_PADDING;
 
+        // Game Over Screen Constants
+        public const string GAME_OVER_TEXT = "GAME OVER";
+        public const int GAME_OVER_TEXT_X = 700;
+        public const int GAME_OVER_TEXT_Y = 530;
+
         // Error codes
         public const int ERROR = -1;
     }
