@@ -7,16 +7,16 @@ namespace colony_builder.Casting
     {
         Resources _resources;
         BuildService _buildService;
-        int _settlementNumber;
+        int _settlementNum;
 
         public UnbuiltSettlement(Point position, bool availableToBuild, 
-            int settlementNumber, Resources resources, BuildService buildService)
+            int settlementNum, Resources resources, BuildService buildService)
         {
             SetPosition(position);
             SetImage(Constants.UNBUILT_SETTLEMENT_IMG_FILEPATH);
             SetWidth(Constants.SETTLEMENT_WIDTH);
             SetHeight(Constants.SETTLEMENT_HEIGHT);
-            _settlementNumber = settlementNumber;
+            _settlementNum = settlementNum;
             _resources  = resources;
             _buildService = buildService;
 
@@ -28,14 +28,25 @@ namespace colony_builder.Casting
 
         public override void DoAction()
         {
-            
             // Check if they have enough resources to build
-            bool canBuild = _buildService.CanBuildSettlement(_settlementNumber);
+            bool canBuild = _buildService.CanBuildSettlement(_settlementNum); 
+            if (canBuild)
+            {
+                _buildService.BuildSettlement(_settlementNum);
+                _resources.DestroyFood((double)Constants.SETTLEMENT_FOOD_COST);
+                _resources.DestroyWood((double)Constants.SETTLEMENT_WOOD_COST);
+                _resources.DestroyStone((double)Constants.SETTLEMENT_STONE_COST);
+            }
         }
 
         public override void Update()
         {
             
+        }
+
+        public int GetSettlementNum()
+        {
+            return _settlementNum;
         }
     }
 }

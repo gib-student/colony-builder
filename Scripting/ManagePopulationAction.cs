@@ -18,9 +18,9 @@ namespace colony_builder.Scripting
             // Increase the population according to the population growth rate.
             // If the food is less than 20% of the population, then the 
             // population will not naturally increase,
-            int foodCount = _resources.GetResourceCount(Constants.FOOD_ACTIONBAR_TEXT);
+            double foodCount = _resources.GetResourceCount(Constants.FOOD_ACTIONBAR_TEXT);
             int populationCount = _population.GetPopulation();
-            bool canReproduce = (float)foodCount > (0.2 * (float)populationCount);
+            bool canReproduce = foodCount > (0.2 * (double)populationCount);
             bool secondHasPassed = _timeService.SecondHasPassed();
 
             if (canReproduce && secondHasPassed)

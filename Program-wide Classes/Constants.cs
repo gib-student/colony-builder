@@ -15,10 +15,13 @@ namespace colony_builder
         public const string MAP_IMG_FILEPATH = "./Assets/russia-map-medium.png";
         public const int MAP_WIDTH = 1600;
         public const int MAP_HEIGHT = 1060;
+        public const string MAP_LIST_KEY = "maps";
 
+        public const string SETTLEMENT_LIST_KEY = "settlements";
         public const string SETTLEMENT_IMG_FILEPATH = "./Assets/pixel-log-cabin-tiny.png";
         public const int SETTLEMENT_WIDTH = 100;
         public const int SETTLEMENT_HEIGHT = SETTLEMENT_WIDTH;
+        public const string UNBUILT_SETTLEMENT_LIST_KEY = "unbuiltSettlements";
         public const string UNBUILT_SETTLEMENT_IMG_FILEPATH = "./Assets/pixel-log-cabin-tiny-light.png";
         public const bool AVAILABLE_TO_BUILD = true;
         public const bool NOT_AVAILABLE_TO_BUILD = false;
@@ -32,6 +35,8 @@ namespace colony_builder
         public const int SETTLEMENT_2_X = START_SETTLEMENT_X;
         public const int SETTLEMENT_2_Y = ROAD_INITIAL_Y - 80;
 
+        public const string ROAD_LIST_KEY = "roads";
+        public const string UNBUILT_ROAD_LIST_KEY = "unbuiltRoads";
         public const string ROAD_IMG_FILEPATH = "";
         public const int VERTICAL_ROAD_WIDTH = 15;
         public const int VERTICAL_ROAD_HEIGHT = 200;
@@ -39,6 +44,8 @@ namespace colony_builder
         public const int HORIZONTAL_ROAD_HEIGHT = VERTICAL_ROAD_WIDTH;
         public const string ORIENTATION_VERTICAL = "vertical";
         public const string ORIENTATION_HORIZONTAL = "horizontal";
+        public const int ROAD_2_NUM = 2;
+        public const int ROAD_3_NUM = 3;
 
         public const int ROAD_INITIAL_X = 1315;
         public const int ROAD_INITIAL_Y = 710;
@@ -48,12 +55,18 @@ namespace colony_builder
         public const int ROAD_3_Y = 420;
 
         public const string FARM_IMG_FILEPATH = "";
+        public const string FARM_LIST_KEY = "farms";
+        public const string UNBUILT_FARM_LIST_KEY = "unbuiltFarms";
         public const int FARM_WIDTH = 60;
         public const int FARM_HEIGHT = 60;
 
         public const int FARM_INITIAL_X = 1190;
         public const int FARM_INITIAL_Y = 950;
+        public const int FARM_2_X = 1190;
+        public const int FARM_2_Y = 600;
 
+        public const string MINE_LIST_KEY = "mines";
+        public const string UNBUILT_MINE_LIST_KEY = "unbuiltMines";
         public const string MINE_IMG_FILEPATH = "";
         public const int MINE_WIDTH = 75;
         public const int MINE_HEIGHT = 50;
@@ -63,6 +76,7 @@ namespace colony_builder
         public const int MINE_2_X = 500;
         public const int MINE_2_Y = 500;
 
+        public const string RESOURCES_LIST_KEY = "resources";
         public const int RESOURCES_X = 50;
         public const int RESOURCES_Y = 1000;
         public const int INITIAL_FOOD = 100;
@@ -85,7 +99,7 @@ namespace colony_builder
         public const string GOLD_TEXT = "gold";
         public const int RESOURCES_IMG_Y = 960;
 
-        
+        public const string POP_LIST_KEY = "population";
         public const int POP_INITIAL = 30;
         public const int POP_X = RESOURCES_X + 290;
         public const int POP_Y = RESOURCES_Y;
@@ -96,6 +110,7 @@ namespace colony_builder
         public const int POP_IMG_HEIGHT = POP_IMG_WIDTH;
 
         /// Action Bar Constants
+        public const string ACTIONBAR_LIST_KEY = "actionBar";
         // Padding and spacing values
         public const int HORIZONTAL_LINE_VERTICAL_PADDING = 20;
         public const int RESOURCE_TEXT_BUTTONS_VERTICAL_PADDING = 40;

@@ -15,81 +15,83 @@ namespace colony_builder
             Constructions constructions = new Constructions();
             EmployedVillagers employedVillagers = new EmployedVillagers(constructions);
             Population population = new Population();
-            BuildService buildService = new BuildService(resources, constructions);
+            EditCastAction editCastAction = new EditCastAction();
+            BuildService buildService = new BuildService(resources, 
+                constructions, editCastAction);
 
             // Create the cast
             Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
 
             // Map
-            cast["maps"]= new List<Actor>();
+            cast[Constants.MAP_LIST_KEY]= new List<Actor>();
             Map defaultMap = new Map();
-            cast["maps"].Add(defaultMap);
+            cast[Constants.MAP_LIST_KEY].Add(defaultMap);
 
             // Initial Settlement
-            cast["settlements"] = new List<Actor>();
+            cast[Constants.SETTLEMENT_LIST_KEY] = new List<Actor>();
             Settlement initialSettlement = new Settlement(new Point(
                 Constants.START_SETTLEMENT_X, Constants.START_SETTLEMENT_Y));
-            cast["settlements"].Add(initialSettlement);
+            cast[Constants.SETTLEMENT_LIST_KEY].Add(initialSettlement);
 
             // Unbuilt Settlements
-            cast["unbuiltSettlements"] = new List<Actor>();
+            cast[Constants.UNBUILT_SETTLEMENT_LIST_KEY] = new List<Actor>();
             UnbuiltSettlement settlement2 = new UnbuiltSettlement(new Point(
                 Constants.SETTLEMENT_2_X, Constants.SETTLEMENT_2_Y), Constants.AVAILABLE_TO_BUILD,
                 Constants.SETTLEMENT_2_NUM, resources, buildService);
-            cast["unbuiltSettlements"].Add(settlement2);
+            cast[Constants.UNBUILT_SETTLEMENT_LIST_KEY].Add(settlement2);
 
             // Initial Roads
-            cast["roads"] = new List<Actor>();
+            cast[Constants.ROAD_LIST_KEY] = new List<Actor>();
             Road initialRoad = new Road(new Point(
                 Constants.ROAD_INITIAL_X, Constants.ROAD_INITIAL_Y),
                 Constants.ORIENTATION_VERTICAL);
-            cast["roads"].Add(initialRoad);
+            cast[Constants.ROAD_LIST_KEY].Add(initialRoad);
 
             // Unbuilt Roads
-            cast["unbuiltRoads"] = new List<Actor>();
+            cast[Constants.UNBUILT_ROAD_LIST_KEY] = new List<Actor>();
             UnbuiltRoad road2 = new UnbuiltRoad(new Point(
                 Constants.ROAD_2_X, Constants.ROAD_2_Y),
                 Constants.ORIENTATION_HORIZONTAL);
             UnbuiltRoad road3 = new UnbuiltRoad(new Point(
                 Constants.ROAD_3_X, Constants.ROAD_3_Y),
                 Constants.ORIENTATION_VERTICAL);
-            cast["unbuiltRoads"].Add(road3);
-            cast["unbuiltRoads"].Add(road2);
+            cast[Constants.UNBUILT_ROAD_LIST_KEY].Add(road3);
+            cast[Constants.UNBUILT_ROAD_LIST_KEY].Add(road2);
 
             // Initial Farms
-            cast["farms"] = new List<Actor>();
+            cast[Constants.FARM_LIST_KEY] = new List<Actor>();
             Farm initialFarm = new Farm(new Point(
                 Constants.FARM_INITIAL_X, Constants.FARM_INITIAL_Y));
-            cast["farms"].Add(initialFarm);
+            cast[Constants.FARM_LIST_KEY].Add(initialFarm);
             
             // Initial Mines
-            cast["mines"] = new List<Actor>();
+            cast[Constants.MINE_LIST_KEY] = new List<Actor>();
             Mine initialMine = new Mine(new Point(
                 Constants.MINE_INITIAL_X, Constants.MINE_INITIAL_Y));
-            cast["mines"].Add(initialMine);
+            cast[Constants.MINE_LIST_KEY].Add(initialMine);
             
             // Initial Resources
-            cast["resources"] = new List<Actor>();
+            cast[Constants.RESOURCES_LIST_KEY] = new List<Actor>();
             ResourcesText resourcesText = new ResourcesText(resources);
             FoodImg foodImg = new FoodImg();
             WoodImg woodImg = new WoodImg();
             StoneImg stoneImg = new StoneImg();
             GoldImg goldImg = new GoldImg();
-            cast["resources"].Add(resourcesText);
-            cast["resources"].Add(foodImg);
-            cast["resources"].Add(woodImg);
-            cast["resources"].Add(stoneImg);
-            cast["resources"].Add(goldImg);
+            cast[Constants.RESOURCES_LIST_KEY].Add(resourcesText);
+            cast[Constants.RESOURCES_LIST_KEY].Add(foodImg);
+            cast[Constants.RESOURCES_LIST_KEY].Add(woodImg);
+            cast[Constants.RESOURCES_LIST_KEY].Add(stoneImg);
+            cast[Constants.RESOURCES_LIST_KEY].Add(goldImg);
 
             // Initial Population
-            cast["population"] = new List<Actor>();
+            cast[Constants.POP_LIST_KEY] = new List<Actor>();
             PopulationText popText = new PopulationText(population);
             PopImg popImg = new PopImg();
-            cast["population"].Add(popText);
-            cast["population"].Add(popImg);
+            cast[Constants.POP_LIST_KEY].Add(popText);
+            cast[Constants.POP_LIST_KEY].Add(popImg);
 
             /// Action Bar
-            cast["actionBar"] = new List<Actor>();
+            cast[Constants.ACTIONBAR_LIST_KEY] = new List<Actor>();
             // Working Villagers text
             Text workingVillagersText = new Text(new Point(
                 Constants.WORKING_VILLAGERS_X, Constants.WORKING_VILLAGERS_Y),
@@ -162,31 +164,31 @@ namespace colony_builder
             
             /// Add them to the cast
             // Working villagers text
-            cast["actionBar"].Add(workingVillagersText);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(workingVillagersText);
             // Food
-            cast["actionBar"].Add(foodText);
-            cast["actionBar"].Add(foodMinusButton);
-            cast["actionBar"].Add(foodAddButton);
-            cast["actionBar"].Add(foodMinusSign);
-            cast["actionBar"].Add(foodAddSign);
-            cast["actionBar"].Add(employedFoodNum);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(foodText);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(foodMinusButton);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(foodAddButton);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(foodMinusSign);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(foodAddSign);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(employedFoodNum);
             // Wood
-            cast["actionBar"].Add(woodText);
-            cast["actionBar"].Add(woodMinusButton);
-            cast["actionBar"].Add(woodAddButton);
-            cast["actionBar"].Add(woodMinusSign);
-            cast["actionBar"].Add(woodAddSign);
-            cast["actionBar"].Add(employedWoodNum);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(woodText);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(woodMinusButton);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(woodAddButton);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(woodMinusSign);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(woodAddSign);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(employedWoodNum);
             // Stone
-            cast["actionBar"].Add(stoneText);
-            cast["actionBar"].Add(stoneMinusButton);
-            cast["actionBar"].Add(stoneAddButton);
-            cast["actionBar"].Add(stoneMinusSign);
-            cast["actionBar"].Add(stoneAddSign);
-            cast["actionBar"].Add(employedStoneNum);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(stoneText);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(stoneMinusButton);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(stoneAddButton);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(stoneMinusSign);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(stoneAddSign);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(employedStoneNum);
             // Unemployed
-            cast["actionBar"].Add(unemployedText);
-            cast["actionBar"].Add(unemployedNum);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(unemployedText);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(unemployedNum);
 
             // Create the script
             Dictionary<string, List<Action>> script = new Dictionary<string, List<Action>>();
@@ -219,6 +221,7 @@ namespace colony_builder
             script["update"].Add(updateActorsAction);
             script["update"].Add(manageResourcesAction);
             script["update"].Add(managePopulationAction);
+            script["update"].Add(editCastAction);
             script["update"].Add(resetTimeAction);  // Must be LAST update
             script["output"].Add(drawActorsAction);
             

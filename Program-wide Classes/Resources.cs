@@ -9,10 +9,10 @@ namespace colony_builder
         private double _stoneCount;
         private double _goldCount;
 
-        private const double _foodProducedPerVillager  = 2;
-        private const double _woodProducedPerVillager  = 2;
-        private const double _stoneProducedPerVillager = 2;
-        private const double _foodDepletedPerVillager   = 1;
+        private const double _foodProducedPerVillager  = 1.2;
+        private const double _woodProducedPerVillager  = .1;
+        private const double _stoneProducedPerVillager = .1;
+        private const double _foodDepletedPerVillager   = .4;
 
         public Resources()
         {
@@ -22,7 +22,7 @@ namespace colony_builder
             _goldCount = Constants.INITIAL_GOLD;
         }
 
-        public int GetResourceCount(string resource)
+        public double GetResourceCount(string resource)
         {
             switch (resource)
             {
@@ -39,33 +39,44 @@ namespace colony_builder
             }
         }
 
-        public void AddResources(string resource, int newResources)
+        public void AddResources(string resource, double newResources)
         {
             switch (resource)
             {
                 case Constants.FOOD_ACTIONBAR_TEXT:
-                    SetFoodCount(_foodCount + (double)newResources);
+                    SetFoodCount(_foodCount + newResources);
                     break;
                 case Constants.WOOD_ACTIONBAR_TEXT:
-                    SetWoodCount(_woodCount + (double)newResources);
+                    SetWoodCount(_woodCount + newResources);
                     break;
                 case Constants.STONE_ACTIONBAR_TEXT:
-                    SetStoneCount(_stoneCount + (double)newResources);
+                    SetStoneCount(_stoneCount + newResources);
                     break;
                 case Constants.GOLD_TEXT:
-                    SetGoldCount(_goldCount + (double)newResources);
+                    // Don't allow gold to be changed for now
+                    // SetGoldCount(_goldCount + (double)newResources);
                     break;
                 default:
                     break;
             }
         }
 
-        public void TakeAwayFood(int foodToDestroy)
+        public void DestroyFood(double foodToDestroy)
         {
-            _foodCount = _foodCount - (double)foodToDestroy;
+            _foodCount -= foodToDestroy;
         }
 
-        private void SetResourceCount(string resource, int newCount)
+        public void DestroyWood(double woodToDestroy)
+        {
+            _woodCount -= woodToDestroy;
+        }
+
+        public void DestroyStone(double stoneToDestroy)
+        {
+            _stoneCount -= stoneToDestroy;
+        }
+
+        public void SetResourceCount(string resource, double newCount)
         {
             switch (resource)
             {
@@ -91,9 +102,9 @@ namespace colony_builder
             _foodCount = newFood;
         }
 
-        private int GetFoodCount()
+        private double GetFoodCount()
         {
-            return (int)_foodCount;
+            return _foodCount;
         }
 
         private void SetWoodCount(double woodCount)
@@ -101,9 +112,9 @@ namespace colony_builder
             _woodCount = woodCount;
         }
 
-        private int GetWoodCount()
+        private double GetWoodCount()
         {
-            return (int)_woodCount;
+            return _woodCount;
         }
 
         private void SetStoneCount(double stoneCount)
@@ -111,9 +122,9 @@ namespace colony_builder
             _stoneCount = stoneCount;
         }
 
-        private int GetStoneCount()
+        private double GetStoneCount()
         {
-            return (int)_stoneCount;
+            return _stoneCount;
         }
 
         private void SetGoldCount(double goldCount)
@@ -121,29 +132,29 @@ namespace colony_builder
             _goldCount = goldCount;
         }
 
-        private int GetGoldCount()
+        private double GetGoldCount()
         {
-            return (int)_goldCount;
+            return _goldCount;
         }
 
-        public int GetFoodProduced(int employedOnFood)
+        public double GetFoodProducedPerVillager()
         {
-            return (int)_foodProducedPerVillager * employedOnFood;
+            return _foodProducedPerVillager;
         }
 
-        public int GetWoodProduced(int employedOnWood)
+        public double GetWoodProducedPerVillager()
         {
-            return (int)_woodProducedPerVillager * employedOnWood;
+            return _woodProducedPerVillager;
         }
 
-        public int GetStoneProduced(int employedOnStone)
+        public double GetStoneProducedPerVillager()
         {
-            return (int)_stoneProducedPerVillager * employedOnStone;
+            return _stoneProducedPerVillager;
         }
 
-        public int GetHunger(int numVillagers)
+        public double GetFoodDepletedPerVillager()
         {
-            return (int)_foodDepletedPerVillager * numVillagers;
+            return _foodDepletedPerVillager;
         }
     }
 }
