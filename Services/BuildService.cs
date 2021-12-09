@@ -57,7 +57,7 @@ namespace colony_builder.Services
             {
                 case (Constants.SETTLEMENT_2_NUM):
                     roadNums = new List<int> {
-                        Constants.ROAD_2_NUM
+                        Constants.DEFAULT_ROAD_NUM
                     };
                     break;
                 case (3):
@@ -82,9 +82,12 @@ namespace colony_builder.Services
                 default:
                     return false;
             }
-            
             bool enoughResources = EnoughResourcesForSettlement();
             bool roadsAreBuilt = _constructions.RoadsAreBuilt(roadNums);
+            if (Debug.debug)
+            {
+                Console.WriteLine($"BuildService: enoughResources: {enoughResources}, roadsAreBuilt: {roadsAreBuilt}");
+            }
             return (enoughResources && roadsAreBuilt);
         }
 

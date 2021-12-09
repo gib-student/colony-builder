@@ -108,7 +108,13 @@ namespace colony_builder.Scripting
         {
             foreach (List<Actor> group in _actorsToRemove.Values)
             {
+                List<Actor> removeList = new List<Actor>();
                 foreach (Actor actor in group)
+                {
+                    removeList.Add(actor);
+                }
+
+                foreach(Actor actor in removeList)
                 {
                     group.Remove(actor);
                 }
@@ -119,7 +125,13 @@ namespace colony_builder.Scripting
         {
             foreach (List<Actor> group in _actorsToAdd.Values)
             {
-                foreach (Actor actor in group)
+                List<Actor> removeList = new List<Actor>();
+                foreach(Actor actor in group)
+                {
+                    removeList.Add(actor);
+                }
+                
+                foreach (Actor actor in removeList)
                 {
                     group.Remove(actor);
                 }

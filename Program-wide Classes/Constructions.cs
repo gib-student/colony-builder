@@ -166,6 +166,10 @@ namespace colony_builder
 
         private bool RoadIsBuilt(int roadNum)
         {
+            int actualRoadNum = roadNum - 1;
+            if (Debug.debug){
+                Console.WriteLine($"Constructions: _roadsBuilt[{actualRoadNum}]: {_roadsBuilt[roadNum - 1]}");
+            }
             return _roadsBuilt[roadNum - 1];
         }
     }
