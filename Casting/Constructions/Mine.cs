@@ -7,8 +7,7 @@ namespace colony_builder.Casting
         public Mine(Point position)
         {
             SetPosition(position);
-            // TODO
-            // SetImage(Constants.);
+            SetImage(Constants.MINE_IMG_FILEPATH);
             SetWidth(Constants.MINE_WIDTH);
             SetHeight(Constants.MINE_HEIGHT);
         }
