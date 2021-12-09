@@ -25,10 +25,10 @@ namespace colony_builder.Casting
 
         private void UpdateResourcesValues()
         {
-            _foodCount = _resources.GetResourceCount(Constants.FOOD_ACTIONBAR_TEXT);
-            _woodCount = _resources.GetResourceCount(Constants.WOOD_ACTIONBAR_TEXT);
-            _stoneCount = _resources.GetResourceCount(Constants.STONE_ACTIONBAR_TEXT);
-            _goldCount = _resources.GetResourceCount(Constants.GOLD_TEXT);
+            _foodCount  = (int)_resources.GetResourceCount(Constants.FOOD_ACTIONBAR_TEXT);
+            _woodCount  = (int)_resources.GetResourceCount(Constants.WOOD_ACTIONBAR_TEXT);
+            _stoneCount = (int)_resources.GetResourceCount(Constants.STONE_ACTIONBAR_TEXT);
+            _goldCount  = (int)_resources.GetResourceCount(Constants.GOLD_TEXT);
         }
 
         public override void DoAction()

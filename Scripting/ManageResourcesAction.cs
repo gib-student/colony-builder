@@ -14,7 +14,6 @@ namespace colony_builder.Scripting
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
-            Console.WriteLine($"ManageResourcesAction: second has passsed: {_timeService.SecondHasPassed()}");
             if (_timeService.SecondHasPassed())
             {
                 List<string> resourceNames = new List<string>
@@ -23,7 +22,7 @@ namespace colony_builder.Scripting
                     Constants.STONE_ACTIONBAR_TEXT, Constants.GOLD_TEXT
                 };
                 AddResources(resourceNames);
-                TakeAwayResources(resourceNames);
+                ApplyHunger();
             }
         }
         
@@ -38,24 +37,17 @@ namespace colony_builder.Scripting
         
         private void AddResources(List<string> resourceNames)
         {
-            if (Debug.debug)
-            {
-                Console.WriteLine("ManageResourcesAction: AddResources()");
-            }
             foreach (string resourceName in resourceNames)
             {
-                int newCount = ComputeNewResources(resourceName);
-                _resources.AddResources(resourceName, newCount);
+                double newResources = ComputeNewResources(resourceName);
+                _resources.AddResources(resourceName, newResources);
             }
         }
 
-        private void TakeAwayResources(List<string> resourceNames)
+        private void ApplyHunger()
         {
-            // For now the only resource which has a natural decrease is food
-            // because of hunger
-            int totalPop = _population.GetPopulation();
-            int foodEaten = _resources.GetHunger(totalPop);
-            _resources.TakeAwayFood(foodEaten);
+            double foodEaten = ComputeFoodLossByHunger();
+            _resources.DestroyFood(foodEaten);
         }
 
         /// <summary>
@@ -63,41 +55,51 @@ namespace colony_builder.Scripting
         /// </summary>
         /// <param name="resourceName">
         /// The name of the resource to be dealt with</param>
-        private int ComputeNewResources(string resourceName)
-        {   
+        private double ComputeNewResources(string resourceName)
+        {
+            int villagersEmployed;
+            double resourcesProducedPerVillager;
+            double newResources;
+            
             switch (resourceName)
             {
                 case Constants.FOOD_ACTIONBAR_TEXT:
-                    int employedOnFood = _employedVillagers.GetEmployedOnFood();
-                    return _resources.GetFoodProduced(employedOnFood);
+                    villagersEmployed = _employedVillagers.GetEmployedOnFood();
+                    resourcesProducedPerVillager  = _resources.GetFoodProducedPerVillager();
+                    break;
 
                 case Constants.WOOD_ACTIONBAR_TEXT:
-                    int employedOnWood = _employedVillagers.GetEmployedOnWood();
-                    return _resources.GetWoodProduced(employedOnWood);
+                    villagersEmployed = _employedVillagers.GetEmployedOnWood();
+                    resourcesProducedPerVillager = _resources.GetWoodProducedPerVillager();
+                    break;
 
                 case Constants.STONE_ACTIONBAR_TEXT:
-                    int employedOnStone = _employedVillagers.GetEmployedOnStone();
-                    return _resources.GetStoneProduced(employedOnStone);
+                    villagersEmployed = _employedVillagers.GetEmployedOnStone();
+                    resourcesProducedPerVillager = _resources.GetStoneProducedPerVillager();
+                    break;
 
                 case Constants.GOLD_TEXT:
                     // For now don't change the amount of gold
-                    return _resources.GetResourceCount(Constants.GOLD_TEXT);
+                    return 0;
 
                 default:
                     return Constants.ERROR;
             }
+
+            newResources = resourcesProducedPerVillager * (double)villagersEmployed;
+            return newResources;
         }
 
         /// <summary>
         /// Compute the new amount of food after the population eats
         /// </summary>
-        private int ComputeFoodAfterHunger()
+        private double ComputeFoodLossByHunger()
         {
             int totalPop = _population.GetPopulation();
-            int foodDepleted = _resources.GetHunger(totalPop);
-            int foodCount = _resources.GetResourceCount(Constants.FOOD_ACTIONBAR_TEXT);
-            int newFoodCount = foodCount - foodDepleted;
-            return newFoodCount;
+            double foodDepletedPerVillager = _resources.GetFoodDepletedPerVillager();
+            double foodDepleted = foodDepletedPerVillager * (double)totalPop;
+            
+            return foodDepleted;
         }
     }
 }
