@@ -22,13 +22,7 @@ namespace colony_builder.Scripting
             int populationCount = _population.GetPopulation();
             bool canReproduce = (float)foodCount > (0.2 * (float)populationCount);
             bool secondHasPassed = _timeService.SecondHasPassed();
-            Console.WriteLine($"ManagePopulationAction: secondHasPassed: {secondHasPassed}, counter: {counter}");
 
-            if (_timeService.SecondHasPassed())
-            {
-                Console.WriteLine($"ManagePopulationAction: canReproduce: {canReproduce}");
-            }
-            
             if (canReproduce && secondHasPassed)
             {
                 _population.HaveChildren();

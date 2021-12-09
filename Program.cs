@@ -15,6 +15,7 @@ namespace colony_builder
             Constructions constructions = new Constructions();
             EmployedVillagers employedVillagers = new EmployedVillagers(constructions);
             Population population = new Population();
+            BuildService buildService = new BuildService(resources, constructions);
 
             // Create the cast
             Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
@@ -33,7 +34,8 @@ namespace colony_builder
             // Unbuilt Settlements
             cast["unbuiltSettlements"] = new List<Actor>();
             UnbuiltSettlement settlement2 = new UnbuiltSettlement(new Point(
-                Constants.SETTLEMENT_2_X, Constants.SETTLEMENT_2_Y), Constants.AVAILABLE_TO_BUILD);
+                Constants.SETTLEMENT_2_X, Constants.SETTLEMENT_2_Y), Constants.AVAILABLE_TO_BUILD,
+                Constants.SETTLEMENT_2_NUM, resources, buildService);
             cast["unbuiltSettlements"].Add(settlement2);
 
             // Initial Roads
@@ -226,8 +228,9 @@ namespace colony_builder
             audioService.StartAudio();
             // audioService.PlaySound(Constants.SOUND_START);
 
-            Director theDirector = new Director(cast, script, outputService, 
-                timeService, resources, employedVillagers, population);
+            Director theDirector = new Director(cast, script, outputService,
+                inputService, timeService, buildService, resources, 
+                employedVillagers, population);
             theDirector.Direct();
         }
     }

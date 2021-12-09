@@ -150,5 +150,23 @@ namespace colony_builder
             int totalMineSpace = numMinesBuilt * _maxVillagersPerMine;
             return mineSpaceTaken < totalMineSpace;
         }
+
+        public bool RoadsAreBuilt(List<int> roadNums)
+        {
+            foreach (int roadNum in roadNums)
+            {
+                if (!RoadIsBuilt(roadNum))
+                {
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        private bool RoadIsBuilt(int roadNum)
+        {
+            return _roadsBuilt[roadNum - 1];
+        }
     }
 }
