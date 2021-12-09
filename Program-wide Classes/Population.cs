@@ -4,8 +4,8 @@ namespace colony_builder
 {
     public class Population
     {
-        private int _populationCount;
-        private const double _populationGrowthRate = 1.00000000001;
+        private double _populationCount;
+        private const double _populationGrowthRate = 1.0005;
         
         public Population()
         {
@@ -14,18 +14,18 @@ namespace colony_builder
 
         public int GetPopulation()
         {
-            return _populationCount;
+            return (int)_populationCount;
         }
 
-        public void SetPoplation(int newPopCount)
+        public void SetPoplation(double newPopCount)
         {
             _populationCount = newPopCount;
         }
 
         public void HaveChildren()
         {
-            double newPopCount = _populationCount + (_populationCount * _populationGrowthRate);
-            _populationCount = (int)newPopCount;
+            double newPopCount = _populationCount * _populationGrowthRate;
+            SetPoplation(newPopCount);
         }
     }
 }

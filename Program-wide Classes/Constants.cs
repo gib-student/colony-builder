@@ -82,7 +82,7 @@ namespace colony_builder
         public const int RESOURCES_IMG_Y = 960;
 
         
-        public const int POP_INITIAL = 31;
+        public const int POP_INITIAL = 30;
         public const int POP_X = RESOURCES_X + 290;
         public const int POP_Y = RESOURCES_Y;
         

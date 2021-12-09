@@ -216,9 +216,9 @@ namespace colony_builder
             script["update"].Add(getTimeAction);    // Must be FIRST update
             script["update"].Add(updateActorsAction);
             script["update"].Add(manageResourcesAction);
+            script["update"].Add(managePopulationAction);
             script["update"].Add(resetTimeAction);  // Must be LAST update
             script["output"].Add(drawActorsAction);
-            script["update"].Add(managePopulationAction);
             
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y,

@@ -20,16 +20,16 @@ namespace colony_builder.Scripting
             // population will not naturally increase,
             int foodCount = _resources.GetResourceCount(Constants.FOOD_ACTIONBAR_TEXT);
             int populationCount = _population.GetPopulation();
-            bool canReproduce = foodCount > (0.2 * populationCount);
+            bool canReproduce = (float)foodCount > (0.2 * (float)populationCount);
             bool secondHasPassed = _timeService.SecondHasPassed();
-            Console.WriteLine($"\tManagePopulationAction: secondHasPassed: {secondHasPassed}, counter: {counter}");
+            Console.WriteLine($"ManagePopulationAction: secondHasPassed: {secondHasPassed}, counter: {counter}");
 
             if (_timeService.SecondHasPassed())
             {
                 Console.WriteLine($"ManagePopulationAction: canReproduce: {canReproduce}");
             }
             
-            if (canReproduce && _timeService.SecondHasPassed())
+            if (canReproduce && secondHasPassed)
             {
                 _population.HaveChildren();
             }
