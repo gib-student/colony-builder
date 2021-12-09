@@ -4,35 +4,45 @@ namespace colony_builder.Services
 {
     public class TimeService
     {
-        private double _previousTimeElapsed;
-        double _timeElapsedTotal;
+        private bool _secondHasPassed;
+        private double _secondsElapsed;
+        
         int counter = 0;
 
         public TimeService()
         {
-            _previousTimeElapsed = 0;
+            _secondsElapsed = 0;
         }
 
         public bool SecondHasPassed()
         {
-            _timeElapsedTotal = Raylib_cs.Raylib.GetTime();
-            double dtime = _timeElapsedTotal - _previousTimeElapsed;
+            return _secondHasPassed;
+        }
+
+        public void ComputeSecondHasPassed()
+        {
+            double currentTime = Raylib_cs.Raylib.GetTime();
+            double dtime = currentTime - _secondsElapsed;
             if (dtime >= 1)
             {
+                _secondHasPassed = true;
+                _secondsElapsed = currentTime;
+
                 counter++;
                 if (Debug.debug)
                 {
                     Console.WriteLine($"\tTimeService: secondHasPassed: {true}");
                 }
-                return true;
             }
-            
-            return false;
+            else
+            {
+                _secondHasPassed = false;
+            }
         }
 
-        public void UpdatePreviousTime()
+        public void ResetSecondHasPassed()
         {
-            _previousTimeElapsed = Raylib_cs.Raylib.GetTime();
+            _secondHasPassed = false;
         }
     }
 }

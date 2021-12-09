@@ -14,6 +14,7 @@ namespace colony_builder.Scripting
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
+            Console.WriteLine($"ManageResourcesAction: second has passsed: {_timeService.SecondHasPassed()}");
             if (_timeService.SecondHasPassed())
             {
                 List<string> resourceNames = new List<string>
@@ -37,6 +38,10 @@ namespace colony_builder.Scripting
         
         private void AddResources(List<string> resourceNames)
         {
+            if (Debug.debug)
+            {
+                Console.WriteLine("ManageResourcesAction: AddResources()");
+            }
             foreach (string resourceName in resourceNames)
             {
                 int newCount = ComputeNewResources(resourceName);

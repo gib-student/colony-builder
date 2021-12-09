@@ -38,8 +38,12 @@ namespace colony_builder
             int counter = 0;
             while (_keepPlaying)
             {
-                counter++;
-                Console.WriteLine($"\n  Director: counter: {counter}");
+                if (Debug.debug)
+                {
+                    counter++;  
+                    Console.WriteLine($"\n  Director: counter: {counter}");
+                }
+
                 CueAction("input");
                 CueAction("update");
                 CueAction("output");
@@ -52,11 +56,6 @@ namespace colony_builder
                 {
                     _keepPlaying = false;
                     EndGame();
-                }
-                
-                if (_timeService.SecondHasPassed())
-                {
-                    _timeService.UpdatePreviousTime();
                 }
             }
         }
