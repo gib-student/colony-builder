@@ -9,26 +9,32 @@ namespace colony_builder
     public class Director
     {
         private bool _keepPlaying = true;
+
         private Dictionary<string, List<Actor>> _cast;
         private Dictionary<string, List<Action>> _script;
         OutputService _outputService;
+        InputService _inputService;
         TimeService _timeService;
+        BuildService _buildService;
         Resources _resources;
         EmployedVillagers _employedVillagers;
         Population _population;
 
         public Director(Dictionary<string, List<Actor>> cast,
             Dictionary<string, List<Action>> script, OutputService outputService,
-            TimeService timeService, Resources resources, 
+            InputService inputService, TimeService timeService, 
+            BuildService buildService, Resources resources, 
             EmployedVillagers employedVillagers, Population population)
         {
-            _cast = cast;
-            _script = script;
-            _outputService = outputService;
-            _timeService = timeService;
-            _resources = resources;
-            _employedVillagers = employedVillagers;
-            _population = population;
+            _cast               = cast;
+            _script             = script;
+            _outputService      = outputService;
+            _inputService       = inputService;
+            _timeService        = timeService;
+            _buildService       = buildService;
+            _resources          = resources;
+            _employedVillagers  = employedVillagers;
+            _population         = population;
         }
         /// <summary>
         /// This method starts the game and continues running until it is finished.

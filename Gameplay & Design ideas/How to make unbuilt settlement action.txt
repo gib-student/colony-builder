@@ -1,0 +1,11 @@
+What needs to happen if they have enough resources?
+* I need to check if the connecting road is built
+
+Once all of the checks are passed, what needs to happen?
+* The unbuiltSettlement needs to be removed from cast, and a new built Settlement needs to be added. 
+* The settlement2Built bool needs to be changed from false to true in Constructions class
+* New unbuilt roads, farms, and mines need to be added to the cast.
+
+Separate
+* I will need to make a new class called BuildService in Services. This will make all of the changes to 
+the cast.

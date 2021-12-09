@@ -22,6 +22,10 @@ namespace colony_builder
         public const string UNBUILT_SETTLEMENT_IMG_FILEPATH = "./Assets/pixel-log-cabin-tiny-light.png";
         public const bool AVAILABLE_TO_BUILD = true;
         public const bool NOT_AVAILABLE_TO_BUILD = false;
+        public const int SETTLEMENT_FOOD_COST = 150;
+        public const int SETTLEMENT_WOOD_COST = 100;
+        public const int SETTLEMENT_STONE_COST = 20;
+        public const int SETTLEMENT_2_NUM = 2;
         
         public const int START_SETTLEMENT_X = 1285;
         public const int START_SETTLEMENT_Y = 915;

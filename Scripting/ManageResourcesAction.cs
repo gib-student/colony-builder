@@ -45,7 +45,7 @@ namespace colony_builder.Scripting
             foreach (string resourceName in resourceNames)
             {
                 int newCount = ComputeNewResources(resourceName);
-                _resources.SetResourceCount(resourceName, newCount);
+                _resources.AddResources(resourceName, newCount);
             }
         }
 
@@ -53,8 +53,9 @@ namespace colony_builder.Scripting
         {
             // For now the only resource which has a natural decrease is food
             // because of hunger
-            int newFood = ComputeFoodAfterHunger();
-            _resources.SetResourceCount(Constants.FOOD_ACTIONBAR_TEXT, newFood);
+            int totalPop = _population.GetPopulation();
+            int foodEaten = _resources.GetHunger(totalPop);
+            _resources.TakeAwayFood(foodEaten);
         }
 
         /// <summary>
@@ -68,24 +69,15 @@ namespace colony_builder.Scripting
             {
                 case Constants.FOOD_ACTIONBAR_TEXT:
                     int employedOnFood = _employedVillagers.GetEmployedOnFood();
-                    double foodProductionRate = _resources.GetFoodProductionRate(employedOnFood);
-                    double foodCount = _resources.GetResourceCount(resourceName);
-                    double newFoodCount = foodCount + foodCount * foodProductionRate;
-                    return (int)newFoodCount;
+                    return _resources.GetFoodProduced(employedOnFood);
 
                 case Constants.WOOD_ACTIONBAR_TEXT:
                     int employedOnWood = _employedVillagers.GetEmployedOnWood();
-                    double woodProductionRate = _resources.GetWoodProductionRate(employedOnWood);
-                    double woodCount = _resources.GetResourceCount(resourceName);
-                    double newWoodCount = woodCount + woodCount * woodProductionRate;
-                    return (int)newWoodCount;
+                    return _resources.GetWoodProduced(employedOnWood);
 
                 case Constants.STONE_ACTIONBAR_TEXT:
                     int employedOnStone = _employedVillagers.GetEmployedOnStone();
-                    double stoneProductionRate = _resources.GetStoneProductionRate(employedOnStone);
-                    double stoneCount = _resources.GetResourceCount(resourceName);
-                    double newStoneCount = stoneCount + stoneCount * stoneProductionRate;
-                    return (int)newStoneCount;
+                    return _resources.GetStoneProduced(employedOnStone);
 
                 case Constants.GOLD_TEXT:
                     // For now don't change the amount of gold
@@ -102,10 +94,10 @@ namespace colony_builder.Scripting
         private int ComputeFoodAfterHunger()
         {
             int totalPop = _population.GetPopulation();
-            double hungerRate = _resources.GetHungerRate(totalPop);
-            double foodCount = _resources.GetResourceCount(Constants.FOOD_ACTIONBAR_TEXT);
-            double newFoodCount = foodCount + foodCount * hungerRate;
-            return (int)newFoodCount;
+            int foodDepleted = _resources.GetHunger(totalPop);
+            int foodCount = _resources.GetResourceCount(Constants.FOOD_ACTIONBAR_TEXT);
+            int newFoodCount = foodCount - foodDepleted;
+            return newFoodCount;
         }
     }
 }
