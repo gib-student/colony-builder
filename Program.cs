@@ -194,12 +194,13 @@ namespace colony_builder
             AudioService audioService = new AudioService();
             TimeService timeService = new TimeService();
 
-            script["output"] = new List<Action>();
             script["input"] = new List<Action>();
             script["update"] = new List<Action>();
+            script["output"] = new List<Action>();
             
             // TODO: Add all of the script
             DrawActorsAction drawActorsAction = new DrawActorsAction(outputService);
+            GetTimeAction getTimeAction = new GetTimeAction(timeService);
             ManageMouseInputAction manageMouseInputAction = 
                 new ManageMouseInputAction(inputService);
             UpdateActorsAction updateActorsAction = new UpdateActorsAction();
@@ -208,11 +209,15 @@ namespace colony_builder
                 population, timeService);
             ManagePopulationAction managePopulationAction = new ManagePopulationAction(
                 population, resources, timeService);
+            ResetTimeAction resetTimeAction = new ResetTimeAction(timeService);
             
-            script["output"].Add(drawActorsAction);
-            script["update"].Add(manageMouseInputAction);
+            
+            script["input"].Add(manageMouseInputAction);
+            script["update"].Add(getTimeAction);    // Must be FIRST update
             script["update"].Add(updateActorsAction);
             script["update"].Add(manageResourcesAction);
+            script["update"].Add(resetTimeAction);  // Must be LAST update
+            script["output"].Add(drawActorsAction);
             script["update"].Add(managePopulationAction);
             
             // Start up the game
