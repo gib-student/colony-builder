@@ -44,6 +44,7 @@ namespace colony_builder
         public const int HORIZONTAL_ROAD_HEIGHT = VERTICAL_ROAD_WIDTH;
         public const string ORIENTATION_VERTICAL = "vertical";
         public const string ORIENTATION_HORIZONTAL = "horizontal";
+        public const int DEFAULT_ROAD_NUM = 1;
         public const int ROAD_2_NUM = 2;
         public const int ROAD_3_NUM = 3;
 
@@ -79,10 +80,10 @@ namespace colony_builder
         public const string RESOURCES_LIST_KEY = "resources";
         public const int RESOURCES_X = 50;
         public const int RESOURCES_Y = 1000;
-        public const int INITIAL_FOOD = 100;
-        public const int INITIAL_WOOD = 50;
-        public const int INITIAL_STONE = 25;
-        public const int INITIAL_GOLD = 15;
+        public const int INITIAL_FOOD = 200;    // 100
+        public const int INITIAL_WOOD = 200;     // 50
+        public const int INITIAL_STONE = 200;    // 25
+        public const int INITIAL_GOLD = 15;     // 15
 
         public const int FOOD_IMG_X = 55;
         public const int FOOD_IMG_WIDTH = 35;
