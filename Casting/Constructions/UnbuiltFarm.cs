@@ -6,9 +6,8 @@ namespace colony_builder.Casting
     {
         public UnbuiltFarm(Point position)
         {
-            // TODO
-            // SetImage(Constants.);
-            SetPosition(position);  
+            SetImage(Constants.UNBUILT_FARM_IMG_FILEPATH);
+            SetPosition(position);
             SetWidth(Constants.FARM_WIDTH);
             SetHeight(Constants.FARM_HEIGHT);
         }

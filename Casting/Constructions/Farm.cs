@@ -6,8 +6,7 @@ namespace colony_builder.Casting
     {
         public Farm(Point position)
         {
-            // TODO
-            // SetImage(Constants.);
+            SetImage(Constants.FARM_IMG_FILEPATH);
             SetPosition(position);  
             SetWidth(Constants.FARM_WIDTH);
             SetHeight(Constants.FARM_HEIGHT);

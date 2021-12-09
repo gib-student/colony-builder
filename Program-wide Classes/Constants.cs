@@ -55,22 +55,24 @@ namespace colony_builder
         public const int ROAD_3_X = 1315;
         public const int ROAD_3_Y = 420;
 
-        public const string FARM_IMG_FILEPATH = "";
+        public const string FARM_IMG_FILEPATH = "./Assets/corn-field-tiny.png";
+        public const string UNBUILT_FARM_IMG_FILEPATH = ".Assets/corn-field-tiny-dark.png";
         public const string FARM_LIST_KEY = "farms";
         public const string UNBUILT_FARM_LIST_KEY = "unbuiltFarms";
-        public const int FARM_WIDTH = 60;
-        public const int FARM_HEIGHT = 60;
+        public const int FARM_WIDTH = 70;
+        public const int FARM_HEIGHT = 70;
 
-        public const int FARM_INITIAL_X = 1190;
+        public const int FARM_INITIAL_X = 1150;
         public const int FARM_INITIAL_Y = 950;
         public const int FARM_2_X = 1190;
         public const int FARM_2_Y = 600;
 
+        public const string MINE_IMG_FILEPATH = "./Assets/cave-entrance-tiny.png";
+        public const string UNBUILT_MINE_IMG_FILEPATH = "./Assets/cave-entrance-tiny-dark.png";
         public const string MINE_LIST_KEY = "mines";
         public const string UNBUILT_MINE_LIST_KEY = "unbuiltMines";
-        public const string MINE_IMG_FILEPATH = "";
-        public const int MINE_WIDTH = 75;
-        public const int MINE_HEIGHT = 50;
+        public const int MINE_WIDTH = 90;
+        public const int MINE_HEIGHT = 100;
         
         public const int MINE_INITIAL_X = 1370;
         public const int MINE_INITIAL_Y = 810;
