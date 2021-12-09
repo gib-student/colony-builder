@@ -23,7 +23,7 @@ namespace colony_builder.Services
         {
             double currentTime = Raylib_cs.Raylib.GetTime();
             double dtime = currentTime - _secondsElapsed;
-            if (dtime >= 1)
+            if (dtime >= 2.5)
             {
                 _secondHasPassed = true;
                 _secondsElapsed = currentTime;
