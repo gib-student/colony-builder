@@ -210,7 +210,7 @@ namespace colony_builder
                 new ManageResourcesAction(resources, employedVillagers, 
                 population, timeService);
             ManagePopulationAction managePopulationAction = new ManagePopulationAction(
-                population, resources, timeService);
+                population, resources, timeService, constructions);
             ResetTimeAction resetTimeAction = new ResetTimeAction(timeService);
             
             

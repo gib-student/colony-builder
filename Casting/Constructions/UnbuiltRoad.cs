@@ -1,10 +1,15 @@
 using System;
+using colony_builder.Services;
 
 namespace colony_builder.Casting
 {
     public class UnbuiltRoad : Actor
     {
-        public UnbuiltRoad(Point position, string orientation)
+        private int _roadNum;
+        BuildService _buildService;
+
+        public UnbuiltRoad(Point position, string orientation, int roadNum,
+            BuildService buildService)
         {
             SetPosition(position);
             // TODO
@@ -20,16 +25,27 @@ namespace colony_builder.Casting
                 SetHeight(Constants.HORIZONTAL_ROAD_HEIGHT);
             }
             SetHasActionIfPressed(true);
+            _roadNum = roadNum;
+            _buildService = buildService;
         }
 
         public override void DoAction()
         {
-            
+            bool canBuild = _buildService.CanBuildRoad();
+            if (canBuild)
+            {
+                _buildService.BuildRoad(_roadNum);
+            }
         }
 
         public override void Update()
         {
             
+        }
+        
+        public int GetRoadNum()
+        {
+            return _roadNum;
         }
     }
 }

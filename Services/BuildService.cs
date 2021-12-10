@@ -26,40 +26,104 @@ namespace colony_builder.Services
         /// <param name="settlementNum">Number identifying the settlement</param>
         public void BuildSettlement(int settlementNum)
         {
+            BuildService buildService = new BuildService(_resources,
+            _constructions, _editCastAction);
             switch (settlementNum)
             {
                 case Constants.SETTLEMENT_2_NUM:
                     // Create the new actors needed when settlement #2 is built
                     // Also, remove the unbuilt settlement from the cast
+                    // New settlement
                     Settlement settlement2 = new Settlement(new Point(
                         Constants.SETTLEMENT_2_X, Constants.SETTLEMENT_2_Y));
+                    // New unbuilt Settlements
+                    UnbuiltSettlement unbuiltSettlement3 = new UnbuiltSettlement(
+                        new Point(Constants.SETTLEMENT_3_X, Constants.SETTLEMENT_3_Y),
+                        true, Constants.SETTLEMENT_3_NUM, _resources, 
+                        buildService);
+                    UnbuiltSettlement unbuiltSettlement4 = new UnbuiltSettlement(
+                        new Point(Constants.SETTLEMENT_4_X, Constants.SETTLEMENT_4_Y),
+                        true, Constants.SETTLEMENT_4_NUM, _resources,
+                        buildService);
+                    // New unbuilt roads
                     UnbuiltRoad road2 = new UnbuiltRoad(new Point(
                         Constants.ROAD_2_X, Constants.ROAD_2_Y),
-                        Constants.ORIENTATION_HORIZONTAL);
+                        Constants.ORIENTATION_HORIZONTAL, Constants.ROAD_2_NUM,
+                        buildService);
                     UnbuiltRoad road3 = new UnbuiltRoad(new Point(
                         Constants.ROAD_3_X, Constants.ROAD_3_Y),
-                        Constants.ORIENTATION_VERTICAL);
+                        Constants.ORIENTATION_VERTICAL, Constants.ROAD_3_NUM, 
+                        buildService);
+                    // New unbuilt Farms
                     UnbuiltFarm unbuiltFarm2 = new UnbuiltFarm(new Point(
-                        Constants.FARM_2_X, Constants.FARM_2_Y),
-                        new BuildService(_resources, _constructions, 
-                        _editCastAction), Constants.FARM_2_NUM);
+                        Constants.FARM_2_X, Constants.FARM_2_Y), Constants.FARM_2_NUM,
+                        buildService);
+                    // New unbuilt Mines
                     UnbuiltMine unbuiltMine2 = new UnbuiltMine(new Point(
                         Constants.MINE_2_X, Constants.MINE_2_Y), 
-                        Constants.MINE_2_NUM);
+                        Constants.MINE_2_NUM,
+                        buildService);
+                    // Add and remove
                     _editCastAction.AddActor(settlement2, 
                         Constants.SETTLEMENT_LIST_KEY);
+                    _editCastAction.AddActor(unbuiltSettlement3, 
+                        Constants.UNBUILT_SETTLEMENT_LIST_KEY);
+                    _editCastAction.AddActor(unbuiltSettlement4,
+                        Constants.UNBUILT_SETTLEMENT_LIST_KEY);
                     _editCastAction.AddActor(road2, Constants.UNBUILT_ROAD_LIST_KEY);
                     _editCastAction.AddActor(road3, Constants.UNBUILT_ROAD_LIST_KEY);
                     _editCastAction.AddActor(unbuiltFarm2,
                         Constants.UNBUILT_FARM_LIST_KEY);
                     _editCastAction.AddActor(unbuiltMine2,
                         Constants.UNBUILT_MINE_LIST_KEY);
-                    
+                    // Remove the old unbuilt Settlement
                     _editCastAction.RemoveUnbuiltSettlement(Constants.SETTLEMENT_2_NUM);
+                    _constructions.SetSettlementIsBuilt(Constants.SETTLEMENT_2_NUM, true);
+                    break;
+                case Constants.SETTLEMENT_3_NUM:
+                    // New settlement
 
-                    _constructions.SetSettlementIsBuilt(Constants.SETTLEMENT_4_NUM, true);
+                    // New unbuilt settlements
+                    
+                    // New roads
+
+                    // New unbuilt farms
+
+                    // New unbuilt mines
+                    _editCastAction.RemoveUnbuiltSettlement(Constants.SETTLEMENT_3_NUM);
+                    _constructions.SetSettlementIsBuilt(Constants.SETTLEMENT_3_NUM, true);
                     break;
             }            
+        }
+
+        /// <summary>
+        /// Build a new road.
+        /// </summary>
+        /// <param name="roadNum">Number identifying the road</param>
+        public void BuildRoad(int roadNum)
+        {
+            switch (roadNum)
+            {
+                case (Constants.ROAD_2_NUM):
+                    // Create new road and destroy the unbuilt road
+                    Road road2 = new Road(new Point(Constants.ROAD_2_X,
+                        Constants.ROAD_2_Y), Constants.ORIENTATION_HORIZONTAL);
+                    
+                    _editCastAction.AddActor(road2, Constants.ROAD_LIST_KEY);
+                    _editCastAction.RemoveUnbuiltRoad(Constants.ROAD_2_NUM);
+                    
+                    _constructions.SetRoadIsBuilt(Constants.ROAD_2_NUM, true);
+                    break;
+                case (Constants.ROAD_3_NUM):
+                    Road road3 = new Road(new Point(Constants.ROAD_3_X,
+                        Constants.ROAD_3_Y), Constants.ORIENTATION_VERTICAL);
+
+                    _editCastAction.AddActor(road3, Constants.ROAD_LIST_KEY);
+                    _editCastAction.RemoveUnbuiltRoad(Constants.ROAD_3_NUM);
+
+                    _constructions.SetRoadIsBuilt(Constants.ROAD_3_NUM, true);
+                    break;
+            }
         }
 
         /// <summary>
@@ -70,10 +134,10 @@ namespace colony_builder.Services
         {
             switch (farmNum)
             {
-                case (2):
+                case (Constants.FARM_2_NUM):
                     // Create new Farm and destroy old farm
                     Farm farm2 = new Farm(new Point(Constants.FARM_2_X,
-                    Constants.FARM_2_Y));
+                        Constants.FARM_2_Y));
 
                     _editCastAction.AddActor(farm2, Constants.FARM_LIST_KEY);
                     _editCastAction.RemoveUnbuiltFarm(Constants.FARM_2_NUM);
@@ -83,6 +147,23 @@ namespace colony_builder.Services
             }
         }
 
+        public void BuildMine(int mineNum)
+        {
+            switch (mineNum)
+            {
+                case (Constants.MINE_2_NUM):
+                    // Create new mine and destory old unbuilt mine
+                    Mine mine2 = new Mine(new Point(Constants.MINE_2_X,
+                        Constants.MINE_2_Y));
+
+                    _editCastAction.AddActor(mine2, Constants.MINE_LIST_KEY);
+                    _editCastAction.RemoveUnbuiltMine(Constants.MINE_2_NUM);
+
+                    _constructions.SetMineIsBuilt(Constants.MINE_2_NUM, true);
+                    break;
+            }
+        }
+        
         /// <summary>
         /// Ensure all the requirements are met in order to build a new settlement.
         /// </summary>
@@ -130,6 +211,16 @@ namespace colony_builder.Services
             return EnoughResourcesForFarm();
         }
 
+        public bool CanBuildMine()
+        {
+            return EnoughResourcesForMine();
+        }
+
+        public bool CanBuildRoad()
+        {
+            return EnoughResourcesForRoad();
+        }
+
         private bool EnoughResourcesForSettlement()
         {
             // Check food
@@ -156,6 +247,36 @@ namespace colony_builder.Services
             // Check stone
             double stoneCount = _resources.GetResourceCount(Constants.STONE_ACTIONBAR_TEXT);
             bool enoughStone = stoneCount > (double)Constants.FARM_STONE_COST;
+
+            return (enoughFood && enoughWood && enoughStone);
+        }
+
+        private bool EnoughResourcesForMine()
+        {
+            // Check food
+            double foodCount = _resources.GetResourceCount(Constants.FOOD_ACTIONBAR_TEXT);
+            bool enoughFood = foodCount > (double)Constants.MINE_FOOD_COST;
+            // Check wood
+            double woodCount = _resources.GetResourceCount(Constants.WOOD_ACTIONBAR_TEXT);
+            bool enoughWood = woodCount > (double)Constants.MINE_WOOD_COST;
+            // Check stone
+            double stoneCount = _resources.GetResourceCount(Constants.STONE_ACTIONBAR_TEXT);
+            bool enoughStone = stoneCount > (double)Constants.MINE_STONE_COST;
+
+            return (enoughFood && enoughWood && enoughStone);
+        }
+
+        private bool EnoughResourcesForRoad()
+        {
+            // Check food
+            double foodCount = _resources.GetResourceCount(Constants.FOOD_ACTIONBAR_TEXT);
+            bool enoughFood = foodCount > (double)Constants.ROAD_FOOD_COST;
+            // Check wood
+            double woodCount = _resources.GetResourceCount(Constants.WOOD_ACTIONBAR_TEXT);
+            bool enoughWood = woodCount > (double)Constants.ROAD_WOOD_COST;
+            // Check stone
+            double stoneCount = _resources.GetResourceCount(Constants.STONE_ACTIONBAR_TEXT);
+            bool enoughStone = stoneCount > (double)Constants.ROAD_STONE_COST;
 
             return (enoughFood && enoughWood && enoughStone);
         }

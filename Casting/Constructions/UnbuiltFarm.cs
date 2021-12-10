@@ -8,7 +8,7 @@ namespace colony_builder.Casting
         BuildService _buildService;
         int _farmNum;
 
-        public UnbuiltFarm(Point position, BuildService buildService, int farmNum)
+        public UnbuiltFarm(Point position, int farmNum, BuildService buildService)
         {
             SetImage(Constants.UNBUILT_FARM_IMG_FILEPATH);
             SetPosition(position);
@@ -22,10 +22,6 @@ namespace colony_builder.Casting
         public override void DoAction()
         {
             bool canBuild = _buildService.CanBuildFarm();
-            if (Debug.debug)
-            {
-                Console.WriteLine($"UnbuiltFarm: farmNum: {_farmNum}, canBuild: {canBuild}");
-            }
             if (canBuild)
             {
                 _buildService.BuildFarm(_farmNum);

@@ -136,6 +136,22 @@ namespace colony_builder
                     break;
             }
         }
+        
+        public void SetRoadIsBuilt(int roadNum, bool isBuilt)
+        {
+            switch (roadNum)
+            {
+                case Constants.ROAD_2_NUM:
+                    _road2Built = isBuilt;
+                    break;
+                case Constants.ROAD_3_NUM:
+                    _road3Built = isBuilt;
+                    break;
+                case Constants.ROAD_4_NUM:
+                    _road4Built = isBuilt;
+                    break;
+            }
+        }
 
         public void SetFarmIsBuilt(int farmNum, bool isBuilt)
         {
@@ -151,6 +167,33 @@ namespace colony_builder
                     _farm4Built = isBuilt;
                     break;
             }
+        }
+
+        public void SetMineIsBuilt(int mineNum, bool isBuilt)
+        {
+            switch (mineNum)
+            {
+                case Constants.MINE_2_NUM:
+                    _mine2Built = isBuilt;
+                    break;
+                case Constants.MINE_3_NUM:
+                    _mine3Built = isBuilt;
+                    break;
+                case Constants.MINE_4_NUM:
+                    _mine4Built = isBuilt;
+                    break;
+            }
+        }
+
+
+        public int GetLivingSpace()
+        {
+            int livingSpace = 0;
+            foreach (bool settlementBuilt in _settlementsBuilt)
+            {
+                livingSpace += _maxVillagersPerSettlement;
+            }
+            return livingSpace;
         }
 
         public bool FarmSpaceAvailable(int farmSpaceTaken)

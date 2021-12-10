@@ -66,11 +66,27 @@ namespace colony_builder.Scripting
             );
         }
 
+        public void RemoveUnbuiltRoad(int actorNum)
+        {
+            int actorIndex = GetUnbuiltRoadIndex(actorNum);
+            _actorsToRemove[Constants.UNBUILT_ROAD_LIST_KEY].Add(
+                _cast[Constants.UNBUILT_SETTLEMENT_LIST_KEY][actorIndex]
+            );
+        }
+
         public void RemoveUnbuiltFarm (int actorNum)
         {
             int actorIndex = GetUnbuiltFarmIndex(actorNum);
             _actorsToRemove[Constants.UNBUILT_FARM_LIST_KEY].Add(
                 _cast[Constants.UNBUILT_FARM_LIST_KEY][actorIndex]
+            );
+        }
+
+        public void RemoveUnbuiltMine(int actorNum)
+        {
+            int actorIndex = GetUnbuiltMineIndex(actorNum);
+            _actorsToRemove[Constants.UNBUILT_MINE_LIST_KEY].Add(
+                _cast[Constants.UNBUILT_MINE_LIST_KEY][actorIndex]
             );
         }
 
@@ -107,6 +123,22 @@ namespace colony_builder.Scripting
                 {
                     return i;
                 } 
+                else i++;
+            }
+            throw new NotImplementedException();
+        }
+
+        private int GetUnbuiltRoadIndex(int actorNum)
+        {
+            int i = 0;
+            foreach (UnbuiltRoad unbuiltRoad in 
+                _cast[Constants.UNBUILT_ROAD_LIST_KEY])
+            {
+                int roadNum = unbuiltRoad.GetRoadNum();
+                if (roadNum == actorNum)
+                {
+                    return i;
+                }
                 else i++;
             }
             throw new NotImplementedException();

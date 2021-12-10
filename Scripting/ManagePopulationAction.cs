@@ -10,6 +10,7 @@ namespace colony_builder.Scripting
         Population _population;
         Resources _resources;
         TimeService _timeService;
+        Constructions  _constructions;
         int counter = 0;
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
@@ -22,19 +23,22 @@ namespace colony_builder.Scripting
             int populationCount = _population.GetPopulation();
             bool canReproduce = foodCount > (0.2 * (double)populationCount);
             bool secondHasPassed = _timeService.SecondHasPassed();
+            int livingSpaceAvailable = _constructions.GetLivingSpace();
+            bool enoughLivingSpace = populationCount <= livingSpaceAvailable;
 
-            if (canReproduce && secondHasPassed)
+            if (canReproduce && secondHasPassed && enoughLivingSpace)
             {
                 _population.HaveChildren();
             }
         }
 
         public ManagePopulationAction(Population population, Resources resources,
-            TimeService timeService)
+            TimeService timeService, Constructions constructions)
         {
             _population = population;
             _resources = resources;
             _timeService = timeService;
+            _constructions = constructions;
         }
     }
 }

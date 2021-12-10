@@ -36,25 +36,34 @@ namespace colony_builder
         public const int START_SETTLEMENT_Y = 915;
         public const int SETTLEMENT_2_X = START_SETTLEMENT_X;
         public const int SETTLEMENT_2_Y = ROAD_INITIAL_Y - 80;
+        public const int SETTLEMENT_3_X = START_SETTLEMENT_X;
+        public const int SETTLEMENT_3_Y = ROAD_3_Y - 80;
+        public const int SETTLEMENT_4_X = ROAD_2_X - 80;
+        public const int SETTLEMENT_4_Y = SETTLEMENT_2_Y;
 
         public const string ROAD_LIST_KEY = "roads";
         public const string UNBUILT_ROAD_LIST_KEY = "unbuiltRoads";
-        public const string ROAD_IMG_FILEPATH = "";
+        public const string ROAD_VERTICAL_IMG_FILEPATH = "./Assets/road-vertical.png";
+        public const string ROAD_HORIZONTAL_IMG_FILEPATH = "./Assets/road-horizontal-tiny.jpg";
         public const int VERTICAL_ROAD_WIDTH = 15;
         public const int VERTICAL_ROAD_HEIGHT = 200;
         public const int HORIZONTAL_ROAD_WIDTH = VERTICAL_ROAD_HEIGHT;
         public const int HORIZONTAL_ROAD_HEIGHT = VERTICAL_ROAD_WIDTH;
         public const string ORIENTATION_VERTICAL = "vertical";
         public const string ORIENTATION_HORIZONTAL = "horizontal";
+        public const int ROAD_FOOD_COST = 75;
+        public const int ROAD_WOOD_COST = 75;
+        public const int ROAD_STONE_COST = 75;
         public const int DEFAULT_ROAD_NUM = 1;
         public const int ROAD_2_NUM = 2;
         public const int ROAD_3_NUM = 3;
+        public const int ROAD_4_NUM = 4;
 
         public const int ROAD_INITIAL_X = 1315;
         public const int ROAD_INITIAL_Y = 710;
         public const int ROAD_2_X = 1075;
         public const int ROAD_2_Y = 665;
-        public const int ROAD_3_X = 1315;
+        public const int ROAD_3_X = ROAD_INITIAL_X;
         public const int ROAD_3_Y = 420;
 
         public const string FARM_IMG_FILEPATH = "./Assets/corn-field-tiny.png";
@@ -63,9 +72,9 @@ namespace colony_builder
         public const string UNBUILT_FARM_LIST_KEY = "unbuiltFarms";
         public const int FARM_WIDTH = 70;
         public const int FARM_HEIGHT = 70;
-        public const int FARM_FOOD_COST = 75;
-        public const int FARM_WOOD_COST = 75;
-        public const int FARM_STONE_COST = 75;
+        public const int FARM_FOOD_COST = 50;
+        public const int FARM_WOOD_COST = 50;
+        public const int FARM_STONE_COST = 15;
         public const int FARM_1_NUM = 1;
         public const int FARM_2_NUM = 2;
         public const int FARM_3_NUM = 3;
@@ -82,9 +91,13 @@ namespace colony_builder
         public const string UNBUILT_MINE_LIST_KEY = "unbuiltMines";
         public const int MINE_WIDTH = 90;
         public const int MINE_HEIGHT = 100;
+        public const int MINE_FOOD_COST = 75;
+        public const int MINE_WOOD_COST = 100;
+        public const int MINE_STONE_COST = 50;
         public const int MINE_1_NUM = 1;
         public const int MINE_2_NUM = 2;
         public const int MINE_3_NUM = 3;
+        public const int MINE_4_NUM = 4;
         
         public const int MINE_INITIAL_X = 1370;
         public const int MINE_INITIAL_Y = 810;
