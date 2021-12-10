@@ -19,6 +19,7 @@ namespace colony_builder.Casting
                 SetWidth(Constants.HORIZONTAL_ROAD_WIDTH);
                 SetHeight(Constants.HORIZONTAL_ROAD_HEIGHT);
             }
+            SetHasActionIfPressed(true);
         }
 
         public override void DoAction()

@@ -1,0 +1,12 @@
+maps
+settlements
+unbuilt settlements
+roads
+unbuilt roads
+farms
+unbuilt farms
+mines
+unbuilt mines
+resources
+population
+actionbar

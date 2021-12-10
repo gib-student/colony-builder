@@ -49,26 +49,24 @@ namespace colony_builder
 
             // Unbuilt Roads
             cast[Constants.UNBUILT_ROAD_LIST_KEY] = new List<Actor>();
-            UnbuiltRoad road2 = new UnbuiltRoad(new Point(
-                Constants.ROAD_2_X, Constants.ROAD_2_Y),
-                Constants.ORIENTATION_HORIZONTAL);
-            UnbuiltRoad road3 = new UnbuiltRoad(new Point(
-                Constants.ROAD_3_X, Constants.ROAD_3_Y),
-                Constants.ORIENTATION_VERTICAL);
-            cast[Constants.UNBUILT_ROAD_LIST_KEY].Add(road3);
-            cast[Constants.UNBUILT_ROAD_LIST_KEY].Add(road2);
-
+            
             // Initial Farms
             cast[Constants.FARM_LIST_KEY] = new List<Actor>();
             Farm initialFarm = new Farm(new Point(
                 Constants.FARM_INITIAL_X, Constants.FARM_INITIAL_Y));
             cast[Constants.FARM_LIST_KEY].Add(initialFarm);
+
+            // Unbuilt Farms
+            cast[Constants.UNBUILT_FARM_LIST_KEY] = new List<Actor>();
             
             // Initial Mines
             cast[Constants.MINE_LIST_KEY] = new List<Actor>();
             Mine initialMine = new Mine(new Point(
                 Constants.MINE_INITIAL_X, Constants.MINE_INITIAL_Y));
             cast[Constants.MINE_LIST_KEY].Add(initialMine);
+
+            // Unbuilt Mines
+            cast[Constants.UNBUILT_MINE_LIST_KEY] = new List<Actor>();
             
             // Initial Resources
             cast[Constants.RESOURCES_LIST_KEY] = new List<Actor>();

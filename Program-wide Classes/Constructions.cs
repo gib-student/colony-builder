@@ -121,6 +121,38 @@ namespace colony_builder
 
         }
 
+        public void SetSettlementIsBuilt(int settlementNum, bool isBuilt)
+        {
+            switch (settlementNum)
+            {
+                case Constants.SETTLEMENT_2_NUM:
+                    _settlement2Built = isBuilt;
+                    break;
+                case Constants.SETTLEMENT_3_NUM:
+                    _settlement3Built = isBuilt;
+                    break;
+                case Constants.SETTLEMENT_4_NUM:
+                    _settlement4Built = isBuilt;
+                    break;
+            }
+        }
+
+        public void SetFarmIsBuilt(int farmNum, bool isBuilt)
+        {
+            switch (farmNum)
+            {
+                case Constants.FARM_2_NUM:
+                    _farm2Built = isBuilt;
+                    break;
+                case Constants.FARM_3_NUM:
+                    _farm3Built = isBuilt;
+                    break;
+                case Constants.FARM_4_NUM:
+                    _farm4Built = isBuilt;
+                    break;
+            }
+        }
+
         public bool FarmSpaceAvailable(int farmSpaceTaken)
         {
             int numFarmsBuilt = 0;

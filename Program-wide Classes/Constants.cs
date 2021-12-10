@@ -29,6 +29,8 @@ namespace colony_builder
         public const int SETTLEMENT_WOOD_COST = 100;
         public const int SETTLEMENT_STONE_COST = 20;
         public const int SETTLEMENT_2_NUM = 2;
+        public const int SETTLEMENT_3_NUM = 3;
+        public const int SETTLEMENT_4_NUM = 4;
         
         public const int START_SETTLEMENT_X = 1285;
         public const int START_SETTLEMENT_Y = 915;
@@ -56,16 +58,23 @@ namespace colony_builder
         public const int ROAD_3_Y = 420;
 
         public const string FARM_IMG_FILEPATH = "./Assets/corn-field-tiny.png";
-        public const string UNBUILT_FARM_IMG_FILEPATH = ".Assets/corn-field-tiny-dark.png";
+        public const string UNBUILT_FARM_IMG_FILEPATH = "./Assets/corn-field-tiny-dark.png";
         public const string FARM_LIST_KEY = "farms";
         public const string UNBUILT_FARM_LIST_KEY = "unbuiltFarms";
         public const int FARM_WIDTH = 70;
         public const int FARM_HEIGHT = 70;
+        public const int FARM_FOOD_COST = 75;
+        public const int FARM_WOOD_COST = 75;
+        public const int FARM_STONE_COST = 75;
+        public const int FARM_1_NUM = 1;
+        public const int FARM_2_NUM = 2;
+        public const int FARM_3_NUM = 3;
+        public const int FARM_4_NUM = 4;
 
         public const int FARM_INITIAL_X = 1150;
         public const int FARM_INITIAL_Y = 950;
-        public const int FARM_2_X = 1190;
-        public const int FARM_2_Y = 600;
+        public const int FARM_2_X = 1130;
+        public const int FARM_2_Y = 550;
 
         public const string MINE_IMG_FILEPATH = "./Assets/cave-entrance-tiny.png";
         public const string UNBUILT_MINE_IMG_FILEPATH = "./Assets/cave-entrance-tiny-dark.png";
@@ -73,18 +82,21 @@ namespace colony_builder
         public const string UNBUILT_MINE_LIST_KEY = "unbuiltMines";
         public const int MINE_WIDTH = 90;
         public const int MINE_HEIGHT = 100;
+        public const int MINE_1_NUM = 1;
+        public const int MINE_2_NUM = 2;
+        public const int MINE_3_NUM = 3;
         
         public const int MINE_INITIAL_X = 1370;
         public const int MINE_INITIAL_Y = 810;
-        public const int MINE_2_X = 500;
+        public const int MINE_2_X = 1450;
         public const int MINE_2_Y = 500;
 
         public const string RESOURCES_LIST_KEY = "resources";
         public const int RESOURCES_X = 50;
         public const int RESOURCES_Y = 1000;
-        public const int INITIAL_FOOD = 200;    // 100
-        public const int INITIAL_WOOD = 200;     // 50
-        public const int INITIAL_STONE = 200;    // 25
+        public const int INITIAL_FOOD = 500;    // 100
+        public const int INITIAL_WOOD = 500;     // 50
+        public const int INITIAL_STONE = 500;    // 25
         public const int INITIAL_GOLD = 15;     // 15
 
         public const int FOOD_IMG_X = 55;
