@@ -60,9 +60,17 @@ namespace colony_builder.Scripting
 
         public void RemoveUnbuiltSettlement(int actorNum)
         {
-            int actorIndex = IdentifyUnbuiltSettlementIndex(actorNum);
+            int actorIndex = GetUnbuiltSettlementIndex(actorNum);
             _actorsToRemove[Constants.UNBUILT_SETTLEMENT_LIST_KEY].Add(
                 _cast[Constants.UNBUILT_SETTLEMENT_LIST_KEY][actorIndex]
+            );
+        }
+
+        public void RemoveUnbuiltFarm (int actorNum)
+        {
+            int actorIndex = GetUnbuiltFarmIndex(actorNum);
+            _actorsToRemove[Constants.UNBUILT_FARM_LIST_KEY].Add(
+                _cast[Constants.UNBUILT_FARM_LIST_KEY][actorIndex]
             );
         }
 
@@ -88,17 +96,49 @@ namespace colony_builder.Scripting
             }
         }
 
-        private int IdentifyUnbuiltSettlementIndex(int actorNum)
+        private int GetUnbuiltSettlementIndex(int actorNum)
         {
             int i = 0;
-            foreach (UnbuiltSettlement actor in 
+            foreach (UnbuiltSettlement unbuiltSettlement in 
                 _cast[Constants.UNBUILT_SETTLEMENT_LIST_KEY])
             {
-                int settlementNum = actor.GetSettlementNum();
+                int settlementNum = unbuiltSettlement.GetSettlementNum();
                 if (settlementNum == actorNum)
                 {
                     return i;
                 } 
+                else i++;
+            }
+            throw new NotImplementedException();
+        }
+
+        private int GetUnbuiltFarmIndex(int actorNum)
+        {
+            int i = 0;
+            foreach(UnbuiltFarm unbuiltFarm in 
+                _cast[Constants.UNBUILT_FARM_LIST_KEY])
+            {
+                int farmNum = unbuiltFarm.GetFarmNum();
+                if (farmNum == actorNum)
+                {
+                    return i;
+                }
+                else i++;
+            }
+            throw new NotImplementedException();
+        }
+
+        private int GetUnbuiltMineIndex(int actorNum)
+        {
+            int i = 0;
+            foreach(UnbuiltMine unbuiltMine in
+                _cast[Constants.UNBUILT_MINE_LIST_KEY])
+            {
+                int mineNum = unbuiltMine.GetMineNum();
+                if (mineNum == actorNum)
+                {
+                    return i;
+                }
                 else i++;
             }
             throw new NotImplementedException();

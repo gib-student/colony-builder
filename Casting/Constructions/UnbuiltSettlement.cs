@@ -30,10 +30,6 @@ namespace colony_builder.Casting
         {
             // Check if they have enough resources to build
             bool canBuild = _buildService.CanBuildSettlement(_settlementNum);
-            if (Debug.debug)
-            {
-                Console.WriteLine($"UnbuiltSettlement: settlementNum: {_settlementNum}, canBuild: {canBuild}");
-            }
             if (canBuild)
             {
                 _buildService.BuildSettlement(_settlementNum);
