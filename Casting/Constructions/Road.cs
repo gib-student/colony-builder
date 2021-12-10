@@ -7,15 +7,15 @@ namespace colony_builder.Casting
         public Road(Point position, string orientation)
         {
             SetPosition(position);
-            // TODO
-            // SetImage(Constants.);            
             if (orientation == Constants.ORIENTATION_VERTICAL)
             {
+                SetImage(Constants.ROAD_VERTICAL_IMG_FILEPATH);            
                 SetWidth(Constants.VERTICAL_ROAD_WIDTH);
                 SetHeight(Constants.VERTICAL_ROAD_HEIGHT);
             }
             else if (orientation == Constants.ORIENTATION_HORIZONTAL)
             {
+                SetImage(Constants.ROAD_HORIZONTAL_IMG_FILEPATH);
                 SetWidth(Constants.HORIZONTAL_ROAD_WIDTH);
                 SetHeight(Constants.HORIZONTAL_ROAD_HEIGHT);
             }
