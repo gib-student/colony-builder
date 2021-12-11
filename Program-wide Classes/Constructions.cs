@@ -139,18 +139,7 @@ namespace colony_builder
         
         public void SetRoadIsBuilt(int roadNum, bool isBuilt)
         {
-            switch (roadNum)
-            {
-                case Constants.ROAD_2_NUM:
-                    _road2Built = isBuilt;
-                    break;
-                case Constants.ROAD_3_NUM:
-                    _road3Built = isBuilt;
-                    break;
-                case Constants.ROAD_4_NUM:
-                    _road4Built = isBuilt;
-                    break;
-            }
+            _roadsBuilt[roadNum - 1] = isBuilt;
         }
 
         public void SetFarmIsBuilt(int farmNum, bool isBuilt)
@@ -230,10 +219,7 @@ namespace colony_builder
         {
             foreach (int roadNum in roadNums)
             {
-                if (!RoadIsBuilt(roadNum))
-                {
-                    return false;
-                }
+                if (!RoadIsBuilt(roadNum)) return false;
             }
             
             return true;
@@ -245,7 +231,7 @@ namespace colony_builder
             if (Debug.debug){
                 Console.WriteLine($"Constructions: _roadsBuilt[{actualRoadNum}]: {_roadsBuilt[roadNum - 1]}");
             }
-            return _roadsBuilt[roadNum - 1];
+            return _roadsBuilt[actualRoadNum];
         }
     }
 }

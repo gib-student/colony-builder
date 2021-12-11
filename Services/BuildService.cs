@@ -46,11 +46,11 @@ namespace colony_builder.Services
                         true, Constants.SETTLEMENT_4_NUM, _resources,
                         buildService);
                     // New unbuilt roads
-                    UnbuiltRoad road2 = new UnbuiltRoad(new Point(
+                    UnbuiltRoad unbuiltRoad2 = new UnbuiltRoad(new Point(
                         Constants.ROAD_2_X, Constants.ROAD_2_Y),
                         Constants.ORIENTATION_HORIZONTAL, Constants.ROAD_2_NUM,
                         buildService);
-                    UnbuiltRoad road3 = new UnbuiltRoad(new Point(
+                    UnbuiltRoad unbuiltRoad3 = new UnbuiltRoad(new Point(
                         Constants.ROAD_3_X, Constants.ROAD_3_Y),
                         Constants.ORIENTATION_VERTICAL, Constants.ROAD_3_NUM, 
                         buildService);
@@ -70,8 +70,8 @@ namespace colony_builder.Services
                         Constants.UNBUILT_SETTLEMENT_LIST_KEY);
                     _editCastAction.AddActor(unbuiltSettlement4,
                         Constants.UNBUILT_SETTLEMENT_LIST_KEY);
-                    _editCastAction.AddActor(road2, Constants.UNBUILT_ROAD_LIST_KEY);
-                    _editCastAction.AddActor(road3, Constants.UNBUILT_ROAD_LIST_KEY);
+                    _editCastAction.AddActor(unbuiltRoad2, Constants.UNBUILT_ROAD_LIST_KEY);
+                    _editCastAction.AddActor(unbuiltRoad3, Constants.UNBUILT_ROAD_LIST_KEY);
                     _editCastAction.AddActor(unbuiltFarm2,
                         Constants.UNBUILT_FARM_LIST_KEY);
                     _editCastAction.AddActor(unbuiltMine2,
@@ -80,18 +80,80 @@ namespace colony_builder.Services
                     _editCastAction.RemoveUnbuiltSettlement(Constants.SETTLEMENT_2_NUM);
                     _constructions.SetSettlementIsBuilt(Constants.SETTLEMENT_2_NUM, true);
                     break;
+
                 case Constants.SETTLEMENT_3_NUM:
                     // New settlement
-
+                    Settlement settlement3 = new Settlement(new Point(
+                        Constants.SETTLEMENT_3_X, Constants.SETTLEMENT_3_Y));
                     // New unbuilt settlements
-                    
-                    // New roads
-
+                    UnbuiltSettlement unbuiltSettlement5 = new UnbuiltSettlement(new Point(
+                        Constants.SETTLEMENT_5_X, Constants.SETTLEMENT_5_Y), true,
+                        Constants.SETTLEMENT_5_NUM, _resources, buildService);
+                    // New unbuilt roads
+                    UnbuiltRoad unbuiltRoad4 = new UnbuiltRoad(new Point(
+                        Constants.ROAD_4_X, Constants.ROAD_4_Y),
+                        Constants.ORIENTATION_HORIZONTAL, Constants.ROAD_4_NUM,
+                        buildService);
+                    UnbuiltRoad unbuiltRoad5 = new UnbuiltRoad(new Point(
+                        Constants.ROAD_5_X, Constants.ROAD_5_Y), 
+                        Constants.ORIENTATION_VERTICAL, Constants.ROAD_5_NUM,
+                        buildService);
                     // New unbuilt farms
+                    UnbuiltFarm unbuiltFarm3 = new UnbuiltFarm(new Point(
+                        Constants.FARM_3_X, Constants.FARM_3_Y), 
+                        Constants.FARM_3_NUM, buildService);
+                    // Add new actors
+                    _editCastAction.AddActor(
+                        settlement3, Constants.SETTLEMENT_LIST_KEY);
+                    _editCastAction.AddActor(
+                        unbuiltSettlement5, Constants.UNBUILT_SETTLEMENT_LIST_KEY);
+                    _editCastAction.AddActor(
+                        unbuiltRoad4, Constants.UNBUILT_ROAD_LIST_KEY);
+                    _editCastAction.AddActor(
+                        unbuiltRoad5, Constants.UNBUILT_ROAD_LIST_KEY);
+                    _editCastAction.AddActor(
+                        unbuiltFarm3, Constants.UNBUILT_FARM_LIST_KEY);
 
-                    // New unbuilt mines
                     _editCastAction.RemoveUnbuiltSettlement(Constants.SETTLEMENT_3_NUM);
                     _constructions.SetSettlementIsBuilt(Constants.SETTLEMENT_3_NUM, true);
+                    break;
+                
+                case Constants.SETTLEMENT_4_NUM:
+                    // New settlement
+                    Settlement settlement4 = new Settlement(new Point(
+                        Constants.SETTLEMENT_4_X, Constants.SETTLEMENT_4_Y));
+                    // Unbuilt settlements
+                    UnbuiltSettlement unbuiltSettlement6 = new UnbuiltSettlement(new Point(
+                        Constants.SETTLEMENT_6_X, Constants.SETTLEMENT_6_Y), true,
+                        Constants.SETTLEMENT_4_NUM, _resources, buildService);
+                    UnbuiltSettlement unbuiltSettlement7 = new UnbuiltSettlement(new Point(
+                        Constants.SETTLEMENT_7_X, Constants.SETTLEMENT_7_Y), true,
+                        Constants.SETTLEMENT_7_NUM, _resources, buildService);
+                    // Unbuilt roads
+                    UnbuiltRoad unbuiltRoad6 = new UnbuiltRoad(new Point(
+                        Constants.ROAD_6_X, Constants.ROAD_6_Y),
+                        Constants.ORIENTATION_HORIZONTAL, Constants.ROAD_6_NUM,
+                        buildService);
+                    UnbuiltRoad unbuiltRoad7 = new UnbuiltRoad(new Point(
+                        Constants.ROAD_7_X, Constants.ROAD_7_Y),
+                        Constants.ORIENTATION_VERTICAL, Constants.ROAD_7_NUM,
+                        buildService);
+                    // Unbuilt mines
+
+                    // Add new actors
+                    _editCastAction.AddActor(
+                        settlement4, Constants.SETTLEMENT_LIST_KEY);
+                    _editCastAction.AddActor(
+                        unbuiltSettlement6, Constants.UNBUILT_SETTLEMENT_LIST_KEY);
+                    _editCastAction.AddActor(
+                        unbuiltSettlement7, Constants.UNBUILT_SETTLEMENT_LIST_KEY);
+                    _editCastAction.AddActor(
+                        unbuiltRoad6, Constants.UNBUILT_ROAD_LIST_KEY);
+                    _editCastAction.AddActor(unbuiltRoad7,
+                        Constants.UNBUILT_ROAD_LIST_KEY);
+
+                    _editCastAction.RemoveUnbuiltSettlement(Constants.SETTLEMENT_4_NUM);
+                    _constructions.SetSettlementIsBuilt(Constants.SETTLEMENT_4_NUM, true);
                     break;
             }            
         }
@@ -122,6 +184,9 @@ namespace colony_builder.Services
                     _editCastAction.RemoveUnbuiltRoad(Constants.ROAD_3_NUM);
 
                     _constructions.SetRoadIsBuilt(Constants.ROAD_3_NUM, true);
+                    break;
+                case(Constants.ROAD_4_NUM):
+                    
                     break;
             }
         }
@@ -179,23 +244,26 @@ namespace colony_builder.Services
                         Constants.DEFAULT_ROAD_NUM
                     };
                     break;
-                case (3):
+                case (Constants.SETTLEMENT_3_NUM):
                     roadNums = new List<int>
                     {
-                        // I need to know what the map is going to look like
-                        // to be able to make these lists
+                        Constants.DEFAULT_ROAD_NUM,
+                        Constants.ROAD_2_NUM
                     };
                     break;
-                case (4):
+                case (Constants.SETTLEMENT_4_NUM):
                     roadNums = new List<int>
                     {
-
+                        Constants.DEFAULT_ROAD_NUM,
+                        Constants.ROAD_3_NUM
                     };
                     break;
-                case (5):
+                case (Constants.SETTLEMENT_5_NUM):
                     roadNums = new List<int>
                     {
-
+                        Constants.DEFAULT_ROAD_NUM,
+                        Constants.ROAD_2_NUM,
+                        Constants.ROAD_4_NUM
                     };
                     break;
                 default:
