@@ -27,7 +27,7 @@ namespace colony_builder
         public const bool NOT_AVAILABLE_TO_BUILD = false;
         public const int SETTLEMENT_FOOD_COST = 150;
         public const int SETTLEMENT_WOOD_COST = 100;
-        public const int SETTLEMENT_STONE_COST = 20;
+        public const int SETTLEMENT_STONE_COST = 100;
         public const int SETTLEMENT_2_NUM = 2;
         public const int SETTLEMENT_3_NUM = 3;
         public const int SETTLEMENT_4_NUM = 4;
@@ -35,7 +35,7 @@ namespace colony_builder
         public const int SETTLEMENT_6_NUM = 6;
         public const int SETTLEMENT_7_NUM = 7;
         public const int SETTLEMENT_8_NUM = 8;
-        
+
         public const int START_SETTLEMENT_X = 1285;
         public const int START_SETTLEMENT_Y = 915;
         public const int SETTLEMENT_2_X = START_SETTLEMENT_X;
@@ -93,9 +93,9 @@ namespace colony_builder
         public const string UNBUILT_FARM_LIST_KEY = "unbuiltFarms";
         public const int FARM_WIDTH = 70;
         public const int FARM_HEIGHT = 70;
-        public const int FARM_FOOD_COST = 50;
-        public const int FARM_WOOD_COST = 50;
-        public const int FARM_STONE_COST = 15;
+        public const int FARM_FOOD_COST = 100;
+        public const int FARM_WOOD_COST = 75;
+        public const int FARM_STONE_COST = 25;
         public const int FARM_1_NUM = 1;
         public const int FARM_2_NUM = 2;
         public const int FARM_3_NUM = 3;
@@ -114,14 +114,14 @@ namespace colony_builder
         public const string UNBUILT_MINE_LIST_KEY = "unbuiltMines";
         public const int MINE_WIDTH = 90;
         public const int MINE_HEIGHT = 100;
-        public const int MINE_FOOD_COST = 75;
+        public const int MINE_FOOD_COST = 100;
         public const int MINE_WOOD_COST = 100;
         public const int MINE_STONE_COST = 50;
         public const int MINE_1_NUM = 1;
         public const int MINE_2_NUM = 2;
         public const int MINE_3_NUM = 3;
         public const int MINE_4_NUM = 4;
-        
+
         public const int MINE_INITIAL_X = 1370;
         public const int MINE_INITIAL_Y = 810;
         public const int MINE_2_X = 1450;
@@ -130,8 +130,9 @@ namespace colony_builder
         public const string RESOURCES_LIST_KEY = "resources";
         public const int INITIAL_FOOD = 100;    // 100
         public const int INITIAL_WOOD = 50;     // 50
-        public const int INITIAL_STONE = 25;    // 25
-        public const int INITIAL_GOLD = 15;     // 15
+        public const int INITIAL_STONE = 50;    // 25
+        public const int INITIAL_GOLD = 30;     // 15
+
 
         public const int FOOD_IMG_X = 55;
         public const int FOOD_IMG_WIDTH = 35;
@@ -156,19 +157,22 @@ namespace colony_builder
         public const string GOLD_TEXT = "gold";
         public const int RESOURCES_IMG_Y = 860;
         public const int GOLD_IMG_Y = RESOURCES_IMG_Y + 15;
-        public const int RESOURCES_COUNT_TEXT_Y = RESOURCES_IMG_Y + 130;
+        public const int RESOURCES_COUNT_TEXT_Y = RESOURCES_IMG_Y + 110;
 
         public const string POP_LIST_KEY = "population";
         public const int POP_INITIAL = 30;
         public const int POP_COUNT_TEXT_X = POP_IMG_X + 28;
         public const int POP_COUNT_TEXT_Y = RESOURCES_COUNT_TEXT_Y;
-        
+
         public const int POP_IMG_X = GOLD_IMG_X + 230;
-        public const int POP_IMG_Y = RESOURCES_IMG_Y;
+        public const int POP_IMG_Y = RESOURCES_IMG_Y - 15;
         public const int POP_IMG_WIDTH = 50;
         public const int POP_IMG_HEIGHT = POP_IMG_WIDTH;
         public const string POP_IMG_FILEPATH = "./Assets/population-tiny.png";
 
+        public const int CONSTRUCTIONS_COST_X = FOOD_IMG_X;
+        public const int CONSTRUCTIONS_COST_Y = 680;
+        
         /// Action Bar Constants
         public const string ACTIONBAR_LIST_KEY = "actionBar";
         // Padding and spacing values
@@ -198,7 +202,7 @@ namespace colony_builder
         public const int EMPLOYED_VALUE_X = MINUS_BUTTON_X + MINUS_BUTTON_EMPLOYED_VALUE_X_PADDING;
         public const string MINUS_BUTTON_TYPE = "minus_button";
         public const string ADD_BUTTON_TYPE = "add_button";
-        public const string BUTTON_IMG_FILEPATH = "./Assets/green-tiny.png";
+        public const string BUTTON_IMG_FILEPATH = "./Assets/red-tiny.png";
         // Food constants
         public const string FOOD_ACTIONBAR_TEXT = "Food";
         public const int FOOD_EMPLOYED_INITIAL_VALUE = 13;

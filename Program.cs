@@ -78,6 +78,7 @@ namespace colony_builder
             WoodImg woodImg = new WoodImg();
             StoneImg stoneImg = new StoneImg();
             GoldImg goldImg = new GoldImg();
+            ConstructionsCost constructionsCost = new ConstructionsCost();
             cast[Constants.RESOURCES_LIST_KEY].Add(foodCountText);
             cast[Constants.RESOURCES_LIST_KEY].Add(woodCountText);
             cast[Constants.RESOURCES_LIST_KEY].Add(stoneCountText);
@@ -86,6 +87,7 @@ namespace colony_builder
             cast[Constants.RESOURCES_LIST_KEY].Add(woodImg);
             cast[Constants.RESOURCES_LIST_KEY].Add(stoneImg);
             cast[Constants.RESOURCES_LIST_KEY].Add(goldImg);
+            cast[Constants.RESOURCES_LIST_KEY].Add(constructionsCost);
 
             // Initial Population
             cast[Constants.POP_LIST_KEY] = new List<Actor>();
