@@ -70,7 +70,7 @@ namespace colony_builder.Scripting
         {
             int actorIndex = GetUnbuiltRoadIndex(actorNum);
             _actorsToRemove[Constants.UNBUILT_ROAD_LIST_KEY].Add(
-                _cast[Constants.UNBUILT_SETTLEMENT_LIST_KEY][actorIndex]
+                _cast[Constants.UNBUILT_ROAD_LIST_KEY][actorIndex]
             );
         }
 

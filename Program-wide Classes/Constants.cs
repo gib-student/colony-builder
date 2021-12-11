@@ -31,20 +31,30 @@ namespace colony_builder
         public const int SETTLEMENT_2_NUM = 2;
         public const int SETTLEMENT_3_NUM = 3;
         public const int SETTLEMENT_4_NUM = 4;
+        public const int SETTLEMENT_5_NUM = 5;
+        public const int SETTLEMENT_6_NUM = 6;
+        public const int SETTLEMENT_7_NUM = 7;
+        public const int SETTLEMENT_8_NUM = 8;
         
         public const int START_SETTLEMENT_X = 1285;
         public const int START_SETTLEMENT_Y = 915;
         public const int SETTLEMENT_2_X = START_SETTLEMENT_X;
         public const int SETTLEMENT_2_Y = ROAD_INITIAL_Y - 80;
-        public const int SETTLEMENT_3_X = START_SETTLEMENT_X;
-        public const int SETTLEMENT_3_Y = ROAD_3_Y - 80;
-        public const int SETTLEMENT_4_X = ROAD_2_X - 80;
-        public const int SETTLEMENT_4_Y = SETTLEMENT_2_Y;
+        public const int SETTLEMENT_3_X = ROAD_2_X - 80;
+        public const int SETTLEMENT_3_Y = SETTLEMENT_2_Y;
+        public const int SETTLEMENT_4_X = START_SETTLEMENT_X;
+        public const int SETTLEMENT_4_Y = ROAD_3_Y - 80;
+        public const int SETTLEMENT_5_X = SETTLEMENT_3_X - 280;
+        public const int SETTLEMENT_5_Y = SETTLEMENT_3_Y;
+        public const int SETTLEMENT_6_X = SETTLEMENT_3_X;
+        public const int SETTLEMENT_6_Y = SETTLEMENT_4_Y;
+        public const int SETTLEMENT_7_X = START_SETTLEMENT_X;
+        public const int SETTLEMENT_7_Y = ROAD_7_Y - 30;
 
         public const string ROAD_LIST_KEY = "roads";
         public const string UNBUILT_ROAD_LIST_KEY = "unbuiltRoads";
         public const string ROAD_VERTICAL_IMG_FILEPATH = "./Assets/road-vertical.png";
-        public const string ROAD_HORIZONTAL_IMG_FILEPATH = "./Assets/road-horizontal-tiny.jpg";
+        public const string ROAD_HORIZONTAL_IMG_FILEPATH = "./Assets/road-horizontal.png";
         public const int VERTICAL_ROAD_WIDTH = 15;
         public const int VERTICAL_ROAD_HEIGHT = 200;
         public const int HORIZONTAL_ROAD_WIDTH = VERTICAL_ROAD_HEIGHT;
@@ -58,6 +68,9 @@ namespace colony_builder
         public const int ROAD_2_NUM = 2;
         public const int ROAD_3_NUM = 3;
         public const int ROAD_4_NUM = 4;
+        public const int ROAD_5_NUM = 5;
+        public const int ROAD_6_NUM = 6;
+        public const int ROAD_7_NUM = 7;
 
         public const int ROAD_INITIAL_X = 1315;
         public const int ROAD_INITIAL_Y = 710;
@@ -65,6 +78,14 @@ namespace colony_builder
         public const int ROAD_2_Y = 665;
         public const int ROAD_3_X = ROAD_INITIAL_X;
         public const int ROAD_3_Y = 420;
+        public const int ROAD_4_X = SETTLEMENT_3_X - 200;
+        public const int ROAD_4_Y = ROAD_2_Y;
+        public const int ROAD_5_X = SETTLEMENT_5_X + 30;
+        public const int ROAD_5_Y = SETTLEMENT_5_Y - 205;
+        public const int ROAD_6_X = ROAD_2_X;
+        public const int ROAD_6_Y = ROAD_2_Y - 270;
+        public const int ROAD_7_X = ROAD_INITIAL_X;
+        public const int ROAD_7_Y = SETTLEMENT_4_X + 30;
 
         public const string FARM_IMG_FILEPATH = "./Assets/corn-field-tiny.png";
         public const string UNBUILT_FARM_IMG_FILEPATH = "./Assets/corn-field-tiny-dark.png";
@@ -84,6 +105,8 @@ namespace colony_builder
         public const int FARM_INITIAL_Y = 950;
         public const int FARM_2_X = 1130;
         public const int FARM_2_Y = 550;
+        public const int FARM_3_X = SETTLEMENT_3_X - 170;
+        public const int FARM_3_Y = FARM_2_Y;
 
         public const string MINE_IMG_FILEPATH = "./Assets/cave-entrance-tiny.png";
         public const string UNBUILT_MINE_IMG_FILEPATH = "./Assets/cave-entrance-tiny-dark.png";
