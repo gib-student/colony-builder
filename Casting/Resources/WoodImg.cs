@@ -7,8 +7,7 @@ namespace colony_builder.Casting
         public WoodImg()
         {
             SetPosition(new Point(Constants.WOOD_IMG_X, Constants.RESOURCES_IMG_Y));
-            // TODO
-            // SetImage(Constants.);
+            SetImage(Constants.WOOD_IMG_FILEPATH);
             SetWidth(Constants.WOOD_IMG_WIDTH);
             SetHeight(Constants.WOOD_IMG_HEIGHT);
         }

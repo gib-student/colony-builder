@@ -11,7 +11,7 @@ namespace colony_builder.Casting
         {
             _population = population;
             _populationCount = _population.GetPopulation();
-            SetPosition(new Point(Constants.POP_X, Constants.POP_Y));
+            SetPosition(new Point(Constants.POP_COUNT_TEXT_X, Constants.POP_COUNT_TEXT_Y));
             SetText(_populationCount.ToString());
         }
 
