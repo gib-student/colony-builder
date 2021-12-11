@@ -130,8 +130,8 @@ namespace colony_builder
         public const string RESOURCES_LIST_KEY = "resources";
         public const int INITIAL_FOOD = 100;    // 100
         public const int INITIAL_WOOD = 50;     // 50
-        public const int INITIAL_STONE = 50;    // 25
-        public const int INITIAL_GOLD = 30;     // 15
+        public const int INITIAL_STONE = 50;    // 50
+        public const int INITIAL_GOLD = 30;     // 30
 
 
         public const int FOOD_IMG_X = 55;
