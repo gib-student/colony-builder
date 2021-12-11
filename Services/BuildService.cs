@@ -155,7 +155,10 @@ namespace colony_builder.Services
                     _editCastAction.RemoveUnbuiltSettlement(Constants.SETTLEMENT_4_NUM);
                     _constructions.SetSettlementIsBuilt(Constants.SETTLEMENT_4_NUM, true);
                     break;
-            }            
+            }
+            _resources.DestroyFood((double)Constants.SETTLEMENT_FOOD_COST);
+            _resources.DestroyWood((double)Constants.SETTLEMENT_WOOD_COST);
+            _resources.DestroyStone((double)Constants.SETTLEMENT_STONE_COST);
         }
 
         /// <summary>
@@ -189,6 +192,9 @@ namespace colony_builder.Services
                     
                     break;
             }
+            _resources.DestroyFood(Constants.ROAD_FOOD_COST);
+            _resources.DestroyWood(Constants.ROAD_WOOD_COST);
+            _resources.DestroyStone(Constants.ROAD_STONE_COST);
         }
 
         /// <summary>
@@ -210,6 +216,9 @@ namespace colony_builder.Services
                     _constructions.SetFarmIsBuilt(Constants.FARM_2_NUM, true);
                     break;
             }
+            _resources.DestroyFood(Constants.FARM_FOOD_COST);
+            _resources.DestroyWood(Constants.FARM_WOOD_COST);
+            _resources.DestroyStone(Constants.FARM_STONE_COST);
         }
 
         public void BuildMine(int mineNum)
@@ -227,6 +236,9 @@ namespace colony_builder.Services
                     _constructions.SetMineIsBuilt(Constants.MINE_2_NUM, true);
                     break;
             }
+            _resources.DestroyFood(Constants.MINE_FOOD_COST);
+            _resources.DestroyWood(Constants.MINE_WOOD_COST);
+            _resources.DestroyStone(Constants.MINE_STONE_COST);
         }
         
         /// <summary>

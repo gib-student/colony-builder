@@ -33,9 +33,6 @@ namespace colony_builder.Casting
             if (canBuild)
             {
                 _buildService.BuildSettlement(_settlementNum);
-                _resources.DestroyFood((double)Constants.SETTLEMENT_FOOD_COST);
-                _resources.DestroyWood((double)Constants.SETTLEMENT_WOOD_COST);
-                _resources.DestroyStone((double)Constants.SETTLEMENT_STONE_COST);
             }
         }
 
