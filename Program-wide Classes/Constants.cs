@@ -130,25 +130,30 @@ namespace colony_builder
         public const string RESOURCES_LIST_KEY = "resources";
         public const int RESOURCES_X = 50;
         public const int RESOURCES_Y = 1000;
-        public const int INITIAL_FOOD = 500;    // 100
-        public const int INITIAL_WOOD = 500;     // 50
-        public const int INITIAL_STONE = 500;    // 25
+        public const int INITIAL_FOOD = 100;    // 100
+        public const int INITIAL_WOOD = 50;     // 50
+        public const int INITIAL_STONE = 25;    // 25
         public const int INITIAL_GOLD = 15;     // 15
 
         public const int FOOD_IMG_X = 55;
         public const int FOOD_IMG_WIDTH = 35;
         public const int FOOD_IMG_HEIGHT = FOOD_IMG_WIDTH;
+        public const int FOOD_COUNT_TEXT_X = FOOD_IMG_X;
         public const int WOOD_IMG_X = FOOD_IMG_X + 76;
         public const int WOOD_IMG_WIDTH = 35;
         public const int WOOD_IMG_HEIGHT = WOOD_IMG_WIDTH;
+        public const int WOOD_COUNT_TEXT_X = WOOD_IMG_X;
         public const int STONE_IMG_X = FOOD_IMG_X + 152;
         public const int STONE_IMG_WIDTH = 35;
         public const int STONE_IMG_HEIGHT = STONE_IMG_WIDTH;
+        public const int STONE_COUNT_TEXT_X = STONE_IMG_X;
         public const int GOLD_IMG_X = FOOD_IMG_X + 215;
         public const int GOLD_IMG_WIDTH = 35;
         public const int GOLD_IMG_HEIGHT = GOLD_IMG_WIDTH;
+        public const int GOLD_COUNT_TEXT_X = GOLD_IMG_X;
         public const string GOLD_TEXT = "gold";
         public const int RESOURCES_IMG_Y = 960;
+        public const int RESOURCES_COUNT_TEXT_Y = RESOURCES_IMG_Y + 10;
 
         public const string POP_LIST_KEY = "population";
         public const int POP_INITIAL = 30;

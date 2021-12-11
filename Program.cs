@@ -14,7 +14,7 @@ namespace colony_builder
             Resources resources = new Resources();
             Constructions constructions = new Constructions();
             EmployedVillagers employedVillagers = new EmployedVillagers(constructions);
-            Population population = new Population();
+            Population population = new Population(employedVillagers);
             EditCastAction editCastAction = new EditCastAction();
             BuildService buildService = new BuildService(resources, 
                 constructions, editCastAction);
@@ -70,12 +70,18 @@ namespace colony_builder
             
             // Initial Resources
             cast[Constants.RESOURCES_LIST_KEY] = new List<Actor>();
-            ResourcesText resourcesText = new ResourcesText(resources);
+            FoodCount foodCountText = new FoodCount(resources);
+            WoodCount woodCountText = new WoodCount(resources);
+            StoneCount stoneCountText = new StoneCount(resources);
+            GoldCount goldCountText = new GoldCount(resources);
             FoodImg foodImg = new FoodImg();
             WoodImg woodImg = new WoodImg();
             StoneImg stoneImg = new StoneImg();
             GoldImg goldImg = new GoldImg();
-            cast[Constants.RESOURCES_LIST_KEY].Add(resourcesText);
+            cast[Constants.RESOURCES_LIST_KEY].Add(foodCountText);
+            cast[Constants.RESOURCES_LIST_KEY].Add(woodCountText);
+            cast[Constants.RESOURCES_LIST_KEY].Add(stoneCountText);
+            cast[Constants.RESOURCES_LIST_KEY].Add(goldCountText);
             cast[Constants.RESOURCES_LIST_KEY].Add(foodImg);
             cast[Constants.RESOURCES_LIST_KEY].Add(woodImg);
             cast[Constants.RESOURCES_LIST_KEY].Add(stoneImg);
@@ -97,7 +103,7 @@ namespace colony_builder
             // Horizontal Line
 
             // Food actors
-            Text foodText = new Text(new Point(
+            Text foodActionbarText = new Text(new Point(
                 Constants.RESOURCE_ACTIONBAR_TEXT_X, Constants.FOOD_ACTIONBAR_TEXT_Y),
                 Constants.FOOD_ACTIONBAR_TEXT);
             Button foodMinusButton = new Button(new Point(
@@ -116,7 +122,7 @@ namespace colony_builder
                 Constants.ADD_SIGN);
             EmployedFoodNum employedFoodNum = new EmployedFoodNum(employedVillagers);
             // Wood actors
-            Text woodText = new Text(new Point(
+            Text woodActionbarText = new Text(new Point(
                 Constants.RESOURCE_ACTIONBAR_TEXT_X, Constants.WOOD_ACTIONBAR_TEXT_Y),
                 Constants.WOOD_ACTIONBAR_TEXT);
             Button woodMinusButton = new Button(new Point(
@@ -135,7 +141,7 @@ namespace colony_builder
                 Constants.ADD_SIGN);
             EmployedWoodNum employedWoodNum = new EmployedWoodNum(employedVillagers);
             // Stone actors
-            Text stoneText = new Text(new Point(
+            Text stoneActionbarText = new Text(new Point(
                 Constants.RESOURCE_ACTIONBAR_TEXT_X, Constants.STONE_ACTIONBAR_TEXT_Y),
                 Constants.STONE_ACTIONBAR_TEXT);
             Button stoneMinusButton = new Button(new Point(
@@ -164,21 +170,21 @@ namespace colony_builder
             // Working villagers text
             cast[Constants.ACTIONBAR_LIST_KEY].Add(workingVillagersText);
             // Food
-            cast[Constants.ACTIONBAR_LIST_KEY].Add(foodText);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(foodActionbarText);
             cast[Constants.ACTIONBAR_LIST_KEY].Add(foodMinusButton);
             cast[Constants.ACTIONBAR_LIST_KEY].Add(foodAddButton);
             cast[Constants.ACTIONBAR_LIST_KEY].Add(foodMinusSign);
             cast[Constants.ACTIONBAR_LIST_KEY].Add(foodAddSign);
             cast[Constants.ACTIONBAR_LIST_KEY].Add(employedFoodNum);
             // Wood
-            cast[Constants.ACTIONBAR_LIST_KEY].Add(woodText);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(woodActionbarText);
             cast[Constants.ACTIONBAR_LIST_KEY].Add(woodMinusButton);
             cast[Constants.ACTIONBAR_LIST_KEY].Add(woodAddButton);
             cast[Constants.ACTIONBAR_LIST_KEY].Add(woodMinusSign);
             cast[Constants.ACTIONBAR_LIST_KEY].Add(woodAddSign);
             cast[Constants.ACTIONBAR_LIST_KEY].Add(employedWoodNum);
             // Stone
-            cast[Constants.ACTIONBAR_LIST_KEY].Add(stoneText);
+            cast[Constants.ACTIONBAR_LIST_KEY].Add(stoneActionbarText);
             cast[Constants.ACTIONBAR_LIST_KEY].Add(stoneMinusButton);
             cast[Constants.ACTIONBAR_LIST_KEY].Add(stoneAddButton);
             cast[Constants.ACTIONBAR_LIST_KEY].Add(stoneMinusSign);

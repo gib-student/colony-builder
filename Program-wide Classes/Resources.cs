@@ -9,7 +9,7 @@ namespace colony_builder
         private double _stoneCount;
         private double _goldCount;
 
-        private const double _foodProducedPerVillager  = 1.5;
+        private const double _foodProducedPerVillager  = .75;
         private const double _woodProducedPerVillager  = .1;
         private const double _stoneProducedPerVillager = .1;
         private const double _foodDepletedPerVillager   = .4;
