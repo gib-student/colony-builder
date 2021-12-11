@@ -12,8 +12,7 @@ namespace colony_builder.Casting
         public Button(Point position, string buttonType, string resourceType, 
             EmployedVillagers employedVillagers, Resources resources)
         {
-            // TODO
-            // SetImage(Constants.);
+            SetImage(Constants.BUTTON_IMG_FILEPATH);
             SetPosition(position);
             _buttonType = buttonType;
             _resourceType = resourceType;

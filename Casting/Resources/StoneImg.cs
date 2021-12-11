@@ -7,8 +7,7 @@ namespace colony_builder.Casting
         public StoneImg()
         {
             SetPosition(new Point(Constants.STONE_IMG_X, Constants.RESOURCES_IMG_Y));
-            // TODO
-            // SetImage(Constants.);
+            SetImage(Constants.STONE_IMG_FILEPATH);
             SetWidth(Constants.STONE_IMG_WIDTH);
             SetHeight(Constants.STONE_IMG_HEIGHT);
         }

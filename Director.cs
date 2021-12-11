@@ -98,6 +98,12 @@ namespace colony_builder
         /// </summary>
         private void EndGame()
         {
+            
+            // Make sure the food displays zero, then update actors
+            _resources.SetResourceCount(Constants.FOOD_ACTIONBAR_TEXT, 0);
+            Action updateActorsAction = _script["update"][1];
+            updateActorsAction.Execute(_cast);
+
             Text gameOverText = new Text(new Point(
                 Constants.GAME_OVER_TEXT_X, Constants.GAME_OVER_TEXT_Y),
                 Constants.GAME_OVER_TEXT);

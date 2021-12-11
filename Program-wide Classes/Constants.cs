@@ -128,8 +128,6 @@ namespace colony_builder
         public const int MINE_2_Y = 500;
 
         public const string RESOURCES_LIST_KEY = "resources";
-        public const int RESOURCES_X = 50;
-        public const int RESOURCES_Y = 1000;
         public const int INITIAL_FOOD = 100;    // 100
         public const int INITIAL_WOOD = 50;     // 50
         public const int INITIAL_STONE = 25;    // 25
@@ -138,32 +136,38 @@ namespace colony_builder
         public const int FOOD_IMG_X = 55;
         public const int FOOD_IMG_WIDTH = 35;
         public const int FOOD_IMG_HEIGHT = FOOD_IMG_WIDTH;
-        public const int FOOD_COUNT_TEXT_X = FOOD_IMG_X;
-        public const int WOOD_IMG_X = FOOD_IMG_X + 76;
+        public const string FOOD_IMG_FILEPATH = "./Assets/bread-tiny.png";
+        public const int FOOD_COUNT_TEXT_X = FOOD_IMG_X + 31;
+        public const int WOOD_IMG_X = FOOD_IMG_X + 150;
         public const int WOOD_IMG_WIDTH = 35;
         public const int WOOD_IMG_HEIGHT = WOOD_IMG_WIDTH;
-        public const int WOOD_COUNT_TEXT_X = WOOD_IMG_X;
-        public const int STONE_IMG_X = FOOD_IMG_X + 152;
+        public const string WOOD_IMG_FILEPATH = "./Assets/log-tiny.png";
+        public const int WOOD_COUNT_TEXT_X = WOOD_IMG_X + 31;
+        public const int STONE_IMG_X = WOOD_IMG_X + 150;
         public const int STONE_IMG_WIDTH = 35;
+        public const string STONE_IMG_FILEPATH = "./Assets/stone-tiny.png";
         public const int STONE_IMG_HEIGHT = STONE_IMG_WIDTH;
-        public const int STONE_COUNT_TEXT_X = STONE_IMG_X;
-        public const int GOLD_IMG_X = FOOD_IMG_X + 215;
+        public const int STONE_COUNT_TEXT_X = STONE_IMG_X + 31;
+        public const int GOLD_IMG_X = STONE_IMG_X + 150;
         public const int GOLD_IMG_WIDTH = 35;
         public const int GOLD_IMG_HEIGHT = GOLD_IMG_WIDTH;
-        public const int GOLD_COUNT_TEXT_X = GOLD_IMG_X;
+        public const string GOLD_IMG_FILEPATH = "./Assets/gold-tiny.png";
+        public const int GOLD_COUNT_TEXT_X = GOLD_IMG_X + 31;
         public const string GOLD_TEXT = "gold";
-        public const int RESOURCES_IMG_Y = 960;
-        public const int RESOURCES_COUNT_TEXT_Y = RESOURCES_IMG_Y + 10;
+        public const int RESOURCES_IMG_Y = 860;
+        public const int GOLD_IMG_Y = RESOURCES_IMG_Y + 15;
+        public const int RESOURCES_COUNT_TEXT_Y = RESOURCES_IMG_Y + 130;
 
         public const string POP_LIST_KEY = "population";
         public const int POP_INITIAL = 30;
-        public const int POP_X = RESOURCES_X + 290;
-        public const int POP_Y = RESOURCES_Y;
+        public const int POP_COUNT_TEXT_X = POP_IMG_X + 28;
+        public const int POP_COUNT_TEXT_Y = RESOURCES_COUNT_TEXT_Y;
         
-        public const int POP_IMG_X = POP_X - 3;
+        public const int POP_IMG_X = GOLD_IMG_X + 230;
         public const int POP_IMG_Y = RESOURCES_IMG_Y;
         public const int POP_IMG_WIDTH = 50;
         public const int POP_IMG_HEIGHT = POP_IMG_WIDTH;
+        public const string POP_IMG_FILEPATH = "./Assets/population-tiny.png";
 
         /// Action Bar Constants
         public const string ACTIONBAR_LIST_KEY = "actionBar";
@@ -194,6 +198,7 @@ namespace colony_builder
         public const int EMPLOYED_VALUE_X = MINUS_BUTTON_X + MINUS_BUTTON_EMPLOYED_VALUE_X_PADDING;
         public const string MINUS_BUTTON_TYPE = "minus_button";
         public const string ADD_BUTTON_TYPE = "add_button";
+        public const string BUTTON_IMG_FILEPATH = "./Assets/green-tiny.png";
         // Food constants
         public const string FOOD_ACTIONBAR_TEXT = "Food";
         public const int FOOD_EMPLOYED_INITIAL_VALUE = 13;
