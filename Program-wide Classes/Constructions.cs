@@ -38,7 +38,7 @@ namespace colony_builder
         private bool _farm8Built;
         private bool _farm9Built;
         private List<bool> _farmsBuilt = new List<bool>();
-        private const int _maxVillagersPerFarm = 20;
+        private const int _maxVillagersPerFarm = 60;
 
         // Mines
         private bool _defaultMineBuilt;
@@ -49,7 +49,7 @@ namespace colony_builder
         private bool _mine6Built;
         private bool _mine7Built;
         private List<bool> _minesBuilt = new List<bool>();
-        private const int _maxVillagersPerMine = 20;
+        private const int _maxVillagersPerMine = 40;
 
         public Constructions()
         {
@@ -144,34 +144,12 @@ namespace colony_builder
 
         public void SetFarmIsBuilt(int farmNum, bool isBuilt)
         {
-            switch (farmNum)
-            {
-                case Constants.FARM_2_NUM:
-                    _farm2Built = isBuilt;
-                    break;
-                case Constants.FARM_3_NUM:
-                    _farm3Built = isBuilt;
-                    break;
-                case Constants.FARM_4_NUM:
-                    _farm4Built = isBuilt;
-                    break;
-            }
+            _farmsBuilt[farmNum - 1] = isBuilt;
         }
 
         public void SetMineIsBuilt(int mineNum, bool isBuilt)
         {
-            switch (mineNum)
-            {
-                case Constants.MINE_2_NUM:
-                    _mine2Built = isBuilt;
-                    break;
-                case Constants.MINE_3_NUM:
-                    _mine3Built = isBuilt;
-                    break;
-                case Constants.MINE_4_NUM:
-                    _mine4Built = isBuilt;
-                    break;
-            }
+            _minesBuilt[mineNum - 1] = isBuilt;
         }
 
 
