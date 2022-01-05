@@ -6,6 +6,7 @@ namespace colony_builder.Casting
     {
         public Road(Point position, string orientation)
         {
+            // This is a comment
             SetPosition(position);
             if (orientation == Constants.ORIENTATION_VERTICAL)
             {
